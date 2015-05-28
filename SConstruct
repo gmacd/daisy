@@ -1,0 +1,1 @@
+Program('daisy', 'main.cpp')
