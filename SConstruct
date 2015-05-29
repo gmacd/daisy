@@ -5,7 +5,11 @@ filesStr = """
 src/main.cpp
 """
 
-env = Environment()
+libs = Split('glfw3')
+libpath = Split('third/glfw')
+frameworks = Split('Cocoa OpenGL IOKit CoreVideo')
+
+env = Environment(LIBS=libs, LIBPATH=libpath, FRAMEWORKS=frameworks)
 
 for key, value in ARGLIST:
     if key == 'release' and value == 1:
