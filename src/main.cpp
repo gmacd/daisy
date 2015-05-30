@@ -1,6 +1,4 @@
 #include <GLFW/glfw3.h>
-#include <bgfxplatform.h>
-#include <bgfx.h>
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -33,6 +31,7 @@ int main(void)
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
     glfwSetKeyCallback(window, key_callback);
+
     while (!glfwWindowShouldClose(window))
     {
         float ratio;
@@ -55,10 +54,13 @@ int main(void)
         glColor3f(0.f, 0.f, 1.f);
         glVertex3f(0.f, 0.6f, 0.f);
         glEnd();
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
     glfwDestroyWindow(window);
     glfwTerminate();
+    
     exit(EXIT_SUCCESS);
 }

@@ -1,0 +1,10 @@
+Import('env')
+
+# scons -Q release=0 (default)
+# scons -Q release=1
+
+filesStr = """
+main.cpp
+"""
+
+env.Program('daisy', Split(filesStr))
