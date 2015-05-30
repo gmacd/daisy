@@ -5,6 +5,10 @@ Import('env')
 
 filesStr = """
 main.cpp
+context.cpp
+entities.cpp
+game.cpp
+renderqueue.cpp
 """
 
 env.Program('daisy', Split(filesStr))

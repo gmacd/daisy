@@ -1,3 +1,5 @@
+import os
+
 cppflags = '-std=c++14'
 
 cpppath = Split('#/third/glfw/include')
@@ -16,6 +18,8 @@ env = Environment(
 for key, value in ARGLIST:
     if key == 'release' and value == 1:
         env.Append(CCFLAGS = '-g')
+
+env['ENV']['TERM'] = os.environ['TERM']
 
 Export('env')
 env.SConscript('src/Sconscript', variant_dir='build', duplicate=0)
