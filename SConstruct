@@ -5,11 +5,20 @@ filesStr = """
 src/main.cpp
 """
 
-libs = Split('glfw3')
-libpath = Split('third/glfw')
+cppflags = '-std=c++14'
+
+cpppath = Split('third/glfw/include third/bgfx/include')
+libpath = Split('third/glfw third/bgfx')
+
+libs = Split('glfw3 bgfxRelease')
 frameworks = Split('Cocoa OpenGL IOKit CoreVideo')
 
-env = Environment(LIBS=libs, LIBPATH=libpath, FRAMEWORKS=frameworks)
+env = Environment(
+    CPPFLAGS = cppflags,
+    CPPPATH = cpppath,
+    LIBS=libs,
+    LIBPATH=libpath,
+    FRAMEWORKS=frameworks)
 
 for key, value in ARGLIST:
     if key == 'release' and value == 1:
