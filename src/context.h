@@ -31,10 +31,17 @@ namespace daisy
 
 	    void NewFrame();
 
+	    double TotalElapsedTime() const { return _lastTotalTime; }
+	    double LastUpdateDuration() const { return _lastUpdateDuration; }
+
 	    Screen& Screen() const { return _screen; }
 
 	private:
 	    unsigned long _frameId = 0;
+
+	    double _lastTotalTime;
+	    double _lastUpdateDuration;
+
 	    class Screen& _screen;
 	};
 }

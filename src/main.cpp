@@ -75,7 +75,7 @@ int main()
         glOrtho(-ctx.Screen().AspectRatio(), ctx.Screen().AspectRatio(), -1.f, 1.f, 1.f, -1.f);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
-        glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
+        glRotatef((float)ctx.TotalElapsedTime() * 50.f, 0.f, 0.f, 1.f);
 
         glBegin(GL_TRIANGLES);
         glColor3f(1.f, 0.f, 0.f);

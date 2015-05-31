@@ -42,6 +42,10 @@ namespace daisy
 	{
 		_frameId++;
 
+		auto totalTime = glfwGetTime();
+		_lastUpdateDuration = totalTime - _lastTotalTime;
+		_lastTotalTime = totalTime;
+
 		_screen.Update();
 	}
 }
