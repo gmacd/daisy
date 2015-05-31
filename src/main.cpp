@@ -10,20 +10,25 @@
 
 using namespace daisy;
 
-static void error_callback(int error, const char* description)
+static void errorCallback(int error, const char* description)
 {
     fputs(description, stderr);
 }
 
-static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
 }
 
+static void framebufferSizeCallback(GLFWwindow* window, int w, int h)
+{
+    Screen::ViewportChanged = true;
+}
+
 int main()
 {
-    glfwSetErrorCallback(error_callback);
+    glfwSetErrorCallback(errorCallback);
     
     if (!glfwInit())
         exit(EXIT_FAILURE);
@@ -37,9 +42,13 @@ int main()
     
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
-    glfwSetKeyCallback(window, key_callback);
 
-    Context ctx;
+    glfwSetKeyCallback(window, keyCallback);
+    glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
+
+    Screen screen(window);
+    Context ctx(screen);
+
     Entities ents;
     RenderQueue rq;
 
@@ -59,17 +68,11 @@ int main()
         // Render queue
         rq.Render();
 
-        float ratio;
-        int width, height;
-        glfwGetFramebufferSize(window, &width, &height);
-        ratio = width / (float) height;
-        glViewport(0, 0, width, height);
-
         glClear(GL_COLOR_BUFFER_BIT);
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
-        glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
+        glOrtho(-ctx.Screen().AspectRatio(), ctx.Screen().AspectRatio(), -1.f, 1.f, 1.f, -1.f);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
