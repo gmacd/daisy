@@ -9,6 +9,9 @@ context.cpp
 entities.cpp
 game.cpp
 renderqueue.cpp
+
+../third/imgui/imgui.cpp
+../third/imgui/imgui_impl_glfw.cpp
 """
 
 env.Program('daisy', Split(filesStr))

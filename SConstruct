@@ -2,7 +2,7 @@ import os
 
 cppflags = '-std=c++14'
 
-cpppath = Split('#/third/glfw/include')
+cpppath = Split('#/third/glfw/include #/third/imgui')
 libpath = Split('#/third/glfw')
 
 libs = Split('glfw3')
