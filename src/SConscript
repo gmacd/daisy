@@ -9,6 +9,7 @@ context.cpp
 entities.cpp
 game.cpp
 renderqueue.cpp
+shaders.cpp
 
 ../third/imgui/imgui.cpp
 ../third/imgui/imgui_impl_glfw.cpp

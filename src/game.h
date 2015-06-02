@@ -1,8 +1,9 @@
 #pragma once
 
+#include "context.h"
 #include "entities.h"
 
 namespace daisy
 {
-	void LoadGame(Entities& ents);
+	void LoadGame(Context& ctx, Entities& ents);
 }

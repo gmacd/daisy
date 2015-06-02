@@ -10,6 +10,7 @@
 #include "entities.h"
 #include "game.h"
 #include "renderqueue.h"
+#include "shaders.h"
 
 using namespace daisy;
 
@@ -32,6 +33,8 @@ static void framebufferSizeCallback(GLFWwindow* window, int w, int h)
 int main()
 {
     glfwSetErrorCallback(errorCallback);
+
+    ImGui::LogToTTY();
     
     if (!glfwInit())
         exit(EXIT_FAILURE);
@@ -52,12 +55,13 @@ int main()
     ImGui_ImplGlfw_Init(window, true);
 
     Screen screen(window);
-    Context ctx(screen);
+    daisy::Shaders shaders;
+    Context ctx(screen, shaders);
 
     Entities ents;
     RenderQueue rq;
 
-    LoadGame(ents);
+    LoadGame(ctx, ents);
 
     bool show_test_window = true;
     bool show_another_window = false;
@@ -137,6 +141,8 @@ int main()
 
     glfwDestroyWindow(window);
     glfwTerminate();
+
+    ImGui::LogFinish();
     
     exit(EXIT_SUCCESS);
 }

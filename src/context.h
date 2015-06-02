@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Shaders.h"
+
 struct GLFWwindow;
 
 namespace daisy
@@ -27,7 +29,9 @@ namespace daisy
 	class Context
 	{
 	public:
-		Context(class Screen& screen);
+		Context(
+			class Screen& screen,
+			class Shaders& shaders);
 
 	    void NewFrame();
 
@@ -35,6 +39,7 @@ namespace daisy
 	    double LastUpdateDuration() const { return _lastUpdateDuration; }
 
 	    Screen& Screen() const { return _screen; }
+	    Shaders& Shaders() const { return _shaders; }
 
 	private:
 	    unsigned long _frameId = 0;
@@ -43,5 +48,6 @@ namespace daisy
 	    double _lastUpdateDuration;
 
 	    class Screen& _screen;
+	    class Shaders& _shaders;
 	};
 }

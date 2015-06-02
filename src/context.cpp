@@ -33,8 +33,11 @@ namespace daisy
 
 	///////////////////////////////////////////////////////////////////////////
 
-	Context::Context(class Screen& screen):
-		_screen(screen)
+	Context::Context(
+		class Screen& screen,
+		class Shaders& shaders):
+		_screen(screen),
+		_shaders(shaders)
 	{
 	}
 
