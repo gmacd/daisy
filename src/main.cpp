@@ -34,8 +34,6 @@ int main()
 {
     glfwSetErrorCallback(errorCallback);
 
-    ImGui::LogToTTY();
-    
     if (!glfwInit())
         exit(EXIT_FAILURE);
     
