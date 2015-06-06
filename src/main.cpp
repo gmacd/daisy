@@ -5,6 +5,8 @@
 
 #include <imgui.h>
 #include "imgui_impl_glfw.h"
+#include <glm/vec3.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "context.h"
 #include "entities.h"
@@ -54,10 +56,10 @@ int main()
 
     Screen screen(window);
     daisy::Shaders shaders;
-    Context ctx(screen, shaders);
+    RenderQueue rq;
+    Context ctx(screen, shaders, rq);
 
     Entities ents;
-    RenderQueue rq;
 
     LoadGame(ctx, ents);
 
@@ -74,7 +76,7 @@ int main()
 
         // 1. Show a simple window
         // Tip: if we don't call ImGui::Begin()/ImGui::End() the widgets appears in a window automatically called "Debug"
-        {
+        /*{
             static float f = 0.0f;
             ImGui::Text("Hello, world!");
             ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
@@ -98,28 +100,21 @@ int main()
         {
             ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiSetCond_FirstUseEver);
             ImGui::ShowTestWindow(&show_test_window);
-        }
+        }*/
 
         // Prepare context for new frame
         ctx.NewFrame();
 
-        // Empty queue
-        rq.Clear();
+        ctx.RenderQueue().SetOrthoProj(ctx.Screen());
 
         // Update components of all entities
         ents.Update();
 
-        // Render queue
-        rq.Render();
+        glm::mat4 tx;
+        tx = glm::rotate(tx, (float)ctx.TotalElapsedTime() * 50.f, glm::vec3(0.f, 0.f, 1.f));
+        ctx.RenderQueue().AddMesh(tx);
 
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        glOrtho(-ctx.Screen().AspectRatio(), ctx.Screen().AspectRatio(), -1.f, 1.f, 1.f, -1.f);
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
-        glRotatef((float)ctx.TotalElapsedTime() * 50.f, 0.f, 0.f, 1.f);
+        ctx.RenderQueue().Render();
 
         glBegin(GL_TRIANGLES);
         glColor3f(1.f, 0.f, 0.f);

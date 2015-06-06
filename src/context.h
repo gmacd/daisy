@@ -1,37 +1,18 @@
 #pragma once
 
+#include "RenderQueue.h"
 #include "Shaders.h"
-
-struct GLFWwindow;
+#include "Screen.h"
 
 namespace daisy
 {
-	class Screen
-	{
-	public:
-		static bool ViewportChanged;
-
-		Screen(GLFWwindow* window);
-
-		void Update();
-
-		float Width() const { return _width; }
-		float Height() const { return _height; }
-		float AspectRatio() const { return _aspectRatio; }
-
-	private:
-		GLFWwindow* _window;
-
-	    float _width, _height, _aspectRatio;
-	};
-
-
 	class Context
 	{
 	public:
 		Context(
 			class Screen& screen,
-			class Shaders& shaders);
+			class Shaders& shaders,
+			class RenderQueue& renderQueue);
 
 	    void NewFrame();
 
@@ -40,6 +21,7 @@ namespace daisy
 
 	    Screen& Screen() const { return _screen; }
 	    Shaders& Shaders() const { return _shaders; }
+	    RenderQueue& RenderQueue() const { return _renderQueue; }
 
 	private:
 	    unsigned long _frameId = 0;
@@ -49,5 +31,6 @@ namespace daisy
 
 	    class Screen& _screen;
 	    class Shaders& _shaders;
+	    class RenderQueue& _renderQueue;
 	};
 }
