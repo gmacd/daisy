@@ -1,14 +1,12 @@
 #include <GLFW/glfw3.h>
 
-#include <stdlib.h>
-#include <stdio.h>
-
 #include <imgui.h>
 #include "imgui_impl_glfw.h"
 #include <glm/vec3.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "context.h"
+#include "core.h"
 #include "entities.h"
 #include "game.h"
 #include "renderqueue.h"
@@ -34,6 +32,8 @@ static void framebufferSizeCallback(GLFWwindow* window, int w, int h)
 
 int main()
 {
+    Log("...daisy...\n");
+
     glfwSetErrorCallback(errorCallback);
 
     if (!glfwInit())

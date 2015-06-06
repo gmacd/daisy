@@ -6,6 +6,7 @@ Import('env')
 filesStr = """
 main.cpp
 context.cpp
+core.cpp
 entities.cpp
 game.cpp
 renderqueue.cpp

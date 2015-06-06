@@ -7,8 +7,6 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/ext.hpp>
 
-#include <iostream>
-
 namespace daisy
 {
 
