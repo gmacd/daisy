@@ -3,6 +3,8 @@
 #include <OpenGL/GL.h>
 #include <imgui.h>
 
+#include "core.h"
+
 namespace daisy
 {
 	Shader::Shader(
@@ -18,7 +20,7 @@ namespace daisy
 		const std::string& vertSource,
 		const std::string& fragSource)
 	{
-		//ImGui::LogText("LoadShader");
+		Log("Loading shader: %s.\n", id.c_str());
 
 		auto prog = glCreateProgram();
 
