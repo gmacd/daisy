@@ -1,6 +1,8 @@
 *.vs
 *.opensdf
 *.vcxproj.user
+*.sdf
 
 bin/
 obj/
+Debug/

@@ -48,6 +48,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
+  <ImportGroup Label="Shared">
+    <Import Project="..\s7core\s7core.vcxitems" Label="Shared" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -67,6 +70,7 @@
     <TargetName>s7Debug</TargetName>
     <TargetExt>.exe</TargetExt>
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir)..\s7core\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>bin\</OutDir>
@@ -81,6 +85,7 @@
     <TargetName>s7Release</TargetName>
     <TargetExt>.exe</TargetExt>
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectDir)..\s7core\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>bin\</OutDir>
@@ -93,7 +98,7 @@
     <ClCompile>
       <AdditionalOptions>/Oy- /Ob2  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\bx\include\compat\msvc;..\bx\include;..\bgfx\include;..\bgfx\3rdparty;..\bgfx\examples\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\bx\include\compat\msvc;..\..\bx\include;..\..\bgfx\include;..\..\bgfx\3rdparty;..\..\bgfx\examples\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BX_CONFIG_ENABLE_MSVC_LEVEL4_WARNINGS=1;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;__STDC_CONSTANT_MACROS;WIN32;_WIN32;_HAS_EXCEPTIONS=0;_HAS_ITERATOR_DEBUGGING=0;_SCL_SECURE=0;_SECURE_SCL=0;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -164,7 +169,7 @@
     <ClCompile>
       <AdditionalOptions>/Oy- /Ob2  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..\bx\include\compat\msvc;..\bx\include;..\bgfx\include;..\bgfx\3rdparty;..\bgfx\examples\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\bx\include\compat\msvc;..\..\bx\include;..\..\bgfx\include;..\..\bgfx\3rdparty;..\..\bgfx\examples\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BX_CONFIG_ENABLE_MSVC_LEVEL4_WARNINGS=1;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;__STDC_CONSTANT_MACROS;WIN32;_WIN32;_HAS_EXCEPTIONS=0;_HAS_ITERATOR_DEBUGGING=0;_SCL_SECURE=0;_SECURE_SCL=0;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -236,7 +241,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\core.cpp" />
     <ClCompile Include="src\main.cpp">
       <ObjectFileName>$(IntDir)examples\04-mesh\mesh.obj</ObjectFileName>
     </ClCompile>
@@ -245,15 +249,6 @@
     <ClCompile Include="src\runner.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\bgfx\.build\projects\vs2015\bgfx.vcxproj">
-      <Project>{6C90947C-58C7-950D-01B4-7B10EDC9110F}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\bgfx\.build\projects\vs2015\example-common.vcxproj">
-      <Project>{21CC0E26-BF62-11E2-A01E-0291BD4C8125}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\core.h" />
     <ClInclude Include="src\material.h" />
     <ClInclude Include="src\mesh.h" />
     <ClInclude Include="src\runner.h" />
@@ -262,6 +257,14 @@
     <None Include="src\fs_mesh.sc" />
     <None Include="src\varying.def.sc" />
     <None Include="src\vs_mesh.sc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\bgfx\.build\projects\vs2015\bgfx.vcxproj">
+      <Project>{6c90947c-58c7-950d-01b4-7b10edc9110f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\bgfx\.build\projects\vs2015\example-common.vcxproj">
+      <Project>{21cc0e26-bf62-11e2-a01e-0291bd4c8125}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
