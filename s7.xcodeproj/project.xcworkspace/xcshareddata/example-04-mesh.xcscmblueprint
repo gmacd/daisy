@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C0B47815E746CE670B865065EBD28FCA9DD6D183",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "03051BBB1E8D6B2DEB531E6F312051C368BCD9E0" : 0,
+    "C63116EC57C58DE0419A43F9413CB55989FCC336" : 0,
+    "C0B47815E746CE670B865065EBD28FCA9DD6D183" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C4BB03B8-23B7-4B47-95C3-4F33B49ACF14",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "03051BBB1E8D6B2DEB531E6F312051C368BCD9E0" : "..",
+    "C63116EC57C58DE0419A43F9413CB55989FCC336" : "bgfx\/",
+    "C0B47815E746CE670B865065EBD28FCA9DD6D183" : "daisy\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "example-04-mesh",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "example-04-mesh.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/gmacd\/cs6.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "03051BBB1E8D6B2DEB531E6F312051C368BCD9E0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/gmacd\/daisy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C0B47815E746CE670B865065EBD28FCA9DD6D183"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/bkaradzic\/bgfx.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C63116EC57C58DE0419A43F9413CB55989FCC336"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C0B47815E746CE670B865065EBD28FCA9DD6D183",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "03051BBB1E8D6B2DEB531E6F312051C368BCD9E0" : 0,
+    "C63116EC57C58DE0419A43F9413CB55989FCC336" : 0,
+    "C0B47815E746CE670B865065EBD28FCA9DD6D183" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "941A9AC7-F109-41D2-9CCA-9FBA94C687CC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "03051BBB1E8D6B2DEB531E6F312051C368BCD9E0" : "..",
+    "C63116EC57C58DE0419A43F9413CB55989FCC336" : "bgfx\/",
+    "C0B47815E746CE670B865065EBD28FCA9DD6D183" : "daisy\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "xxx",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "xxx.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/gmacd\/cs6.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "03051BBB1E8D6B2DEB531E6F312051C368BCD9E0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/gmacd\/daisy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C0B47815E746CE670B865065EBD28FCA9DD6D183"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/bkaradzic\/bgfx.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C63116EC57C58DE0419A43F9413CB55989FCC336"
+    }
+  ]
+}

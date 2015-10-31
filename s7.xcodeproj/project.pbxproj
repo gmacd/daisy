@@ -1,0 +1,389 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF1A800C1BE4F048001B4DCF /* libbgfxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FED1BE4EBBF00C21B7D /* libbgfxDebug.a */; };
+		BF1A800D1BE4F048001B4DCF /* libexample-commonDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FF31BE4EBC500C21B7D /* libexample-commonDebug.a */; };
+		BFC62FF71BE4EC1100C21B7D /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFC62FF61BE4EC1100C21B7D /* mesh.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF1A800E1BE4F056001B4DCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 474F027A495544A053613C4A;
+			remoteInfo = bgfx;
+		};
+		BF1A80101BE4F056001B4DCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 76AF14247FB23D600BF17CFF;
+			remoteInfo = "example-common";
+		};
+		BFC62FEC1BE4EBBF00C21B7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 67EF308F102A33AA0F2334DF;
+			remoteInfo = bgfx;
+		};
+		BFC62FF21BE4EBC500C21B7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 192A6D8A37302DFB7935007D;
+			remoteInfo = "example-common";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3C6A573719B372D8452B7C32 /* s7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = s7.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "../bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
+		BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "example-common.xcodeproj"; path = "../bgfx/.build/projects/xcode4-osx/example-common.xcodeproj"; sourceTree = "<group>"; };
+		BFC62FF61BE4EC1100C21B7D /* mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mesh.cpp; path = "../bgfx/examples/04-mesh/mesh.cpp"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		200620BB171A0ADE1B0D4953 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1A800C1BE4F048001B4DCF /* libbgfxDebug.a in Frameworks */,
+				BF1A800D1BE4F048001B4DCF /* libexample-commonDebug.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		075E21FE3E0B66C3786E5F30 /* 04-mesh */ = {
+			isa = PBXGroup;
+			children = (
+				BFC62FF61BE4EC1100C21B7D /* mesh.cpp */,
+			);
+			name = "04-mesh";
+			sourceTree = "<group>";
+		};
+		28F4183720E11FD901282985 /* example-04-mesh */ = {
+			isa = PBXGroup;
+			children = (
+				67114587784959AE230F5496 /* examples */,
+				33EC2073479654CD404C48BF /* Products */,
+				7E52275D0E47769C010B3156 /* Projects */,
+			);
+			name = "example-04-mesh";
+			sourceTree = "<group>";
+		};
+		33EC2073479654CD404C48BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3C6A573719B372D8452B7C32 /* s7.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67114587784959AE230F5496 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				075E21FE3E0B66C3786E5F30 /* 04-mesh */,
+			);
+			name = examples;
+			sourceTree = "<group>";
+		};
+		7E52275D0E47769C010B3156 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */,
+				BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		BFC62FE91BE4EBBF00C21B7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFC62FED1BE4EBBF00C21B7D /* libbgfxDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFC62FEF1BE4EBC500C21B7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFC62FF31BE4EBC500C21B7D /* libexample-commonDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		386A67FE2601007654261470 /* s7 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AC06F19429500FD62A9673E /* Build configuration list for PBXNativeTarget "s7" */;
+			buildPhases = (
+				0B69095D012476A435B235B5 /* Resources */,
+				595E11661E325C8C34B15B7C /* Sources */,
+				200620BB171A0ADE1B0D4953 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF1A800F1BE4F056001B4DCF /* PBXTargetDependency */,
+				BF1A80111BE4F056001B4DCF /* PBXTargetDependency */,
+			);
+			name = s7;
+			productInstallPath = "$(HOME)/Applications";
+			productName = "example-04-mesh";
+			productReference = 3C6A573719B372D8452B7C32 /* s7.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+			};
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "s7" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 28F4183720E11FD901282985 /* example-04-mesh */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BFC62FE91BE4EBBF00C21B7D /* Products */;
+					ProjectRef = BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */;
+				},
+				{
+					ProductGroup = BFC62FEF1BE4EBC500C21B7D /* Products */;
+					ProjectRef = BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				386A67FE2601007654261470 /* s7 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BFC62FED1BE4EBBF00C21B7D /* libbgfxDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libbgfxDebug.a;
+			remoteRef = BFC62FEC1BE4EBBF00C21B7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BFC62FF31BE4EBC500C21B7D /* libexample-commonDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libexample-commonDebug.a";
+			remoteRef = BFC62FF21BE4EBC500C21B7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0B69095D012476A435B235B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		595E11661E325C8C34B15B7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFC62FF71BE4EC1100C21B7D /* mesh.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF1A800F1BE4F056001B4DCF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = bgfx;
+			targetProxy = BF1A800E1BE4F056001B4DCF /* PBXContainerItemProxy */;
+		};
+		BF1A80111BE4F056001B4DCF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "example-common";
+			targetProxy = BF1A80101BE4F056001B4DCF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		13CC64A07A76010450535B6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = ../../osx_universal/bin;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = s7;
+			};
+			name = Release;
+		};
+		1BB867262CC47E120833173A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"BX_CONFIG_ENABLE_MSVC_LEVEL4_WARNINGS=1",
+					__STDC_LIMIT_MACROS,
+					__STDC_FORMAT_MACROS,
+					__STDC_CONSTANT_MACROS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../bx/include/compat/osx,
+					../bx/include,
+					../bgfx/include,
+					../bgfx/3rdparty,
+					../bgfx/examples/common,
+				);
+				OBJROOT = ../../osx_universal/bin/Universal/Debug/s7;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-Wshadow",
+					"-Wfatal-errors",
+					"-msse2",
+					"-Wunused-value",
+					"-Wundef",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					Metal,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					OpenGL,
+				);
+				SDKROOT = macosx;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = ../../osx_universal/bin;
+			};
+			name = Debug;
+		};
+		22BB5C0E71440D8B2B402E6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = ../../osx_universal/bin;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = s7;
+			};
+			name = Debug;
+		};
+		46202B6419280D883B132167 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"BX_CONFIG_ENABLE_MSVC_LEVEL4_WARNINGS=1",
+					__STDC_LIMIT_MACROS,
+					__STDC_FORMAT_MACROS,
+					__STDC_CONSTANT_MACROS,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../bx/include/compat/osx,
+					../bx/include,
+					../bgfx/include,
+					../bgfx/3rdparty,
+					../bgfx/examples/common,
+				);
+				OBJROOT = ../../osx_universal/bin/Universal/Release/s7;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = (
+					"-Wshadow",
+					"-Wfatal-errors",
+					"-msse2",
+					"-Wunused-value",
+					"-Wundef",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					Metal,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					OpenGL,
+				);
+				SDKROOT = macosx;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
+				SYMROOT = ../../osx_universal/bin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "s7" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BB867262CC47E120833173A /* Debug */,
+				46202B6419280D883B132167 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4AC06F19429500FD62A9673E /* Build configuration list for PBXNativeTarget "s7" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22BB5C0E71440D8B2B402E6A /* Debug */,
+				13CC64A07A76010450535B6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
