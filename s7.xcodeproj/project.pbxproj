@@ -9,7 +9,14 @@
 /* Begin PBXBuildFile section */
 		BF1A800C1BE4F048001B4DCF /* libbgfxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FED1BE4EBBF00C21B7D /* libbgfxDebug.a */; };
 		BF1A800D1BE4F048001B4DCF /* libexample-commonDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FF31BE4EBC500C21B7D /* libexample-commonDebug.a */; };
-		BFC62FF71BE4EC1100C21B7D /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFC62FF61BE4EC1100C21B7D /* mesh.cpp */; };
+		BF1A80171BE4FDC0001B4DCF /* core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80151BE4FDC0001B4DCF /* core.cpp */; };
+		BF1A80221BE4FDD1001B4DCF /* fs_mesh.sc in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80181BE4FDD1001B4DCF /* fs_mesh.sc */; };
+		BF1A80231BE4FDD1001B4DCF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80191BE4FDD1001B4DCF /* main.cpp */; };
+		BF1A80241BE4FDD1001B4DCF /* material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A801A1BE4FDD1001B4DCF /* material.cpp */; };
+		BF1A80251BE4FDD1001B4DCF /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A801C1BE4FDD1001B4DCF /* mesh.cpp */; };
+		BF1A80261BE4FDD1001B4DCF /* runner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A801E1BE4FDD1001B4DCF /* runner.cpp */; };
+		BF1A80271BE4FDD1001B4DCF /* varying.def.sc in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80201BE4FDD1001B4DCF /* varying.def.sc */; };
+		BF1A80281BE4FDD1001B4DCF /* vs_mesh.sc in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80211BE4FDD1001B4DCF /* vs_mesh.sc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,9 +52,21 @@
 
 /* Begin PBXFileReference section */
 		3C6A573719B372D8452B7C32 /* s7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = s7.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF1A80151BE4FDC0001B4DCF /* core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = core.cpp; path = s7core/src/core.cpp; sourceTree = "<group>"; };
+		BF1A80161BE4FDC0001B4DCF /* core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = core.h; path = s7core/src/core.h; sourceTree = "<group>"; };
+		BF1A80181BE4FDD1001B4DCF /* fs_mesh.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fs_mesh.sc; path = s7/src/fs_mesh.sc; sourceTree = "<group>"; };
+		BF1A80191BE4FDD1001B4DCF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = s7/src/main.cpp; sourceTree = "<group>"; };
+		BF1A801A1BE4FDD1001B4DCF /* material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = material.cpp; path = s7/src/material.cpp; sourceTree = "<group>"; };
+		BF1A801B1BE4FDD1001B4DCF /* material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = material.h; path = s7/src/material.h; sourceTree = "<group>"; };
+		BF1A801C1BE4FDD1001B4DCF /* mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mesh.cpp; path = s7/src/mesh.cpp; sourceTree = "<group>"; };
+		BF1A801D1BE4FDD1001B4DCF /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mesh.h; path = s7/src/mesh.h; sourceTree = "<group>"; };
+		BF1A801E1BE4FDD1001B4DCF /* runner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = runner.cpp; path = s7/src/runner.cpp; sourceTree = "<group>"; };
+		BF1A801F1BE4FDD1001B4DCF /* runner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = runner.h; path = s7/src/runner.h; sourceTree = "<group>"; };
+		BF1A80201BE4FDD1001B4DCF /* varying.def.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = varying.def.sc; path = s7/src/varying.def.sc; sourceTree = "<group>"; };
+		BF1A80211BE4FDD1001B4DCF /* vs_mesh.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vs_mesh.sc; path = s7/src/vs_mesh.sc; sourceTree = "<group>"; };
+		BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s7tests.cpp; path = s7tests/src/s7tests.cpp; sourceTree = "<group>"; };
 		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "../bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
 		BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "example-common.xcodeproj"; path = "../bgfx/.build/projects/xcode4-osx/example-common.xcodeproj"; sourceTree = "<group>"; };
-		BFC62FF61BE4EC1100C21B7D /* mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mesh.cpp; path = "../bgfx/examples/04-mesh/mesh.cpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,18 +82,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		075E21FE3E0B66C3786E5F30 /* 04-mesh */ = {
-			isa = PBXGroup;
-			children = (
-				BFC62FF61BE4EC1100C21B7D /* mesh.cpp */,
-			);
-			name = "04-mesh";
-			sourceTree = "<group>";
-		};
 		28F4183720E11FD901282985 /* example-04-mesh */ = {
 			isa = PBXGroup;
 			children = (
-				67114587784959AE230F5496 /* examples */,
+				BF1A80131BE4FD95001B4DCF /* core */,
+				BF1A80141BE4FDA3001B4DCF /* tests */,
+				BF1A80121BE4FD8B001B4DCF /* s7 */,
 				33EC2073479654CD404C48BF /* Products */,
 				7E52275D0E47769C010B3156 /* Projects */,
 			);
@@ -89,14 +102,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		67114587784959AE230F5496 /* examples */ = {
-			isa = PBXGroup;
-			children = (
-				075E21FE3E0B66C3786E5F30 /* 04-mesh */,
-			);
-			name = examples;
-			sourceTree = "<group>";
-		};
 		7E52275D0E47769C010B3156 /* Projects */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +109,40 @@
 				BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */,
 			);
 			name = Projects;
+			sourceTree = "<group>";
+		};
+		BF1A80121BE4FD8B001B4DCF /* s7 */ = {
+			isa = PBXGroup;
+			children = (
+				BF1A80181BE4FDD1001B4DCF /* fs_mesh.sc */,
+				BF1A80191BE4FDD1001B4DCF /* main.cpp */,
+				BF1A801A1BE4FDD1001B4DCF /* material.cpp */,
+				BF1A801B1BE4FDD1001B4DCF /* material.h */,
+				BF1A801C1BE4FDD1001B4DCF /* mesh.cpp */,
+				BF1A801D1BE4FDD1001B4DCF /* mesh.h */,
+				BF1A801E1BE4FDD1001B4DCF /* runner.cpp */,
+				BF1A801F1BE4FDD1001B4DCF /* runner.h */,
+				BF1A80201BE4FDD1001B4DCF /* varying.def.sc */,
+				BF1A80211BE4FDD1001B4DCF /* vs_mesh.sc */,
+			);
+			name = s7;
+			sourceTree = "<group>";
+		};
+		BF1A80131BE4FD95001B4DCF /* core */ = {
+			isa = PBXGroup;
+			children = (
+				BF1A80151BE4FDC0001B4DCF /* core.cpp */,
+				BF1A80161BE4FDC0001B4DCF /* core.h */,
+			);
+			name = core;
+			sourceTree = "<group>";
+		};
+		BF1A80141BE4FDA3001B4DCF /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */,
+			);
+			name = tests;
 			sourceTree = "<group>";
 		};
 		BFC62FE91BE4EBBF00C21B7D /* Products */ = {
@@ -201,6 +240,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1A80281BE4FDD1001B4DCF /* vs_mesh.sc in Resources */,
+				BF1A80221BE4FDD1001B4DCF /* fs_mesh.sc in Resources */,
+				BF1A80271BE4FDD1001B4DCF /* varying.def.sc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +253,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFC62FF71BE4EC1100C21B7D /* mesh.cpp in Sources */,
+				BF1A80241BE4FDD1001B4DCF /* material.cpp in Sources */,
+				BF1A80171BE4FDC0001B4DCF /* core.cpp in Sources */,
+				BF1A80251BE4FDD1001B4DCF /* mesh.cpp in Sources */,
+				BF1A80231BE4FDD1001B4DCF /* main.cpp in Sources */,
+				BF1A80261BE4FDD1001B4DCF /* runner.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,11 +282,19 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = ../../osx_universal/bin;
+				CONFIGURATION_BUILD_DIR = osx_universal/bin;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"BX_CONFIG_ENABLE_MSVC_LEVEL4_WARNINGS=1",
+					__STDC_LIMIT_MACROS,
+					__STDC_FORMAT_MACROS,
+					__STDC_CONSTANT_MACROS,
+				);
 				INSTALL_PATH = "$(HOME)/Applications";
+				OBJROOT = osx_universal/bin/Universal/Release/s7;
 				PRODUCT_NAME = s7;
+				SYMROOT = osx_universal/bin;
 			};
 			name = Release;
 		};
@@ -302,11 +356,19 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = ../../osx_universal/bin;
+				CONFIGURATION_BUILD_DIR = osx_universal/bin;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"BX_CONFIG_ENABLE_MSVC_LEVEL4_WARNINGS=1",
+					__STDC_LIMIT_MACROS,
+					__STDC_FORMAT_MACROS,
+					__STDC_CONSTANT_MACROS,
+				);
 				INSTALL_PATH = "$(HOME)/Applications";
+				OBJROOT = osx_universal/bin/Universal/Debug/s7;
 				PRODUCT_NAME = s7;
+				SYMROOT = osx_universal/bin;
 			};
 			name = Debug;
 		};
