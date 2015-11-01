@@ -24,6 +24,8 @@
 		BF1A80451BE654FF001B4DCF /* core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80151BE4FDC0001B4DCF /* core.cpp */; };
 		BF1A80461BE654FF001B4DCF /* core.h in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80161BE4FDC0001B4DCF /* core.h */; };
 		BF1A80471BE654FF001B4DCF /* s7tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */; };
+		BF1A80511BE656E3001B4DCF /* s7benchmarks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */; };
+		BF1A80521BE6573F001B4DCF /* s7benchmarks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,7 @@
 		BF1A80341BE5F510001B4DCF /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shaders; path = ../bgfx/examples/runtime/shaders; sourceTree = "<group>"; };
 		BF1A80361BE5F554001B4DCF /* meshes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = meshes; path = ../bgfx/examples/runtime/meshes; sourceTree = "<group>"; };
 		BF1A803E1BE6548C001B4DCF /* s7test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = s7test; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s7benchmarks.cpp; path = s7tests/src/s7benchmarks.cpp; sourceTree = "<group>"; };
 		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "../bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
 		BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "example-common.xcodeproj"; path = "../bgfx/.build/projects/xcode4-osx/example-common.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +176,7 @@
 		BF1A80141BE4FDA3001B4DCF /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */,
 				BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */,
 			);
 			name = tests;
@@ -329,6 +333,7 @@
 				BF1A80251BE4FDD1001B4DCF /* mesh.cpp in Sources */,
 				BF1A80231BE4FDD1001B4DCF /* main.cpp in Sources */,
 				BF1A80261BE4FDD1001B4DCF /* runner.cpp in Sources */,
+				BF1A80511BE656E3001B4DCF /* s7benchmarks.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1A80521BE6573F001B4DCF /* s7benchmarks.cpp in Sources */,
 				BF1A80451BE654FF001B4DCF /* core.cpp in Sources */,
 				BF1A80461BE654FF001B4DCF /* core.h in Sources */,
 				BF1A80471BE654FF001B4DCF /* s7tests.cpp in Sources */,
@@ -547,6 +553,16 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					Metal,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					OpenGL,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -589,6 +605,16 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					Metal,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					OpenGL,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -621,6 +647,7 @@
 				BF1A80431BE6548C001B4DCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
