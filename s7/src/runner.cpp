@@ -125,20 +125,6 @@ namespace s7 {
 			float at[3] = { 0.0f, 1.0f,  0.0f };
 			float eye[3] = { 0.0f, 1.0f, -2.5f };
 
-			float verts[] = {
-				 0.0f,  0.0f,  1.0f,
-				-1.0f,  0.0f,  0.0f,
-				 1.0f,  0.0f,  1.0f,
-				 0.0f, -1.0f,  1.0f,
-			};
-
-			uint16_t indices[] = {
-				0, 3, 1,
-				0, 2, 3,
-				0, 1, 2,
-				1, 3, 2,
-			};
-
 			// Set view and projection matrix for view 0.
 			const auto* hmd = bgfx::getHMD();
 			if (NULL != hmd && 0 != (hmd->flags & BGFX_HMD_RENDERING))

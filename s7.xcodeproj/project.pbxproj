@@ -17,6 +17,10 @@
 		BF1A80261BE4FDD1001B4DCF /* runner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A801E1BE4FDD1001B4DCF /* runner.cpp */; };
 		BF1A80271BE4FDD1001B4DCF /* varying.def.sc in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80201BE4FDD1001B4DCF /* varying.def.sc */; };
 		BF1A80281BE4FDD1001B4DCF /* vs_mesh.sc in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80211BE4FDD1001B4DCF /* vs_mesh.sc */; };
+		BF1A80321BE5F390001B4DCF /* font in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80301BE5F390001B4DCF /* font */; };
+		BF1A80331BE5F390001B4DCF /* textures in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80311BE5F390001B4DCF /* textures */; };
+		BF1A80351BE5F510001B4DCF /* shaders in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80341BE5F510001B4DCF /* shaders */; };
+		BF1A80371BE5F554001B4DCF /* meshes in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80361BE5F554001B4DCF /* meshes */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,10 @@
 		BF1A80201BE4FDD1001B4DCF /* varying.def.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = varying.def.sc; path = s7/src/varying.def.sc; sourceTree = "<group>"; };
 		BF1A80211BE4FDD1001B4DCF /* vs_mesh.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vs_mesh.sc; path = s7/src/vs_mesh.sc; sourceTree = "<group>"; };
 		BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s7tests.cpp; path = s7tests/src/s7tests.cpp; sourceTree = "<group>"; };
+		BF1A80301BE5F390001B4DCF /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; name = font; path = ../bgfx/examples/runtime/font; sourceTree = "<group>"; };
+		BF1A80311BE5F390001B4DCF /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = textures; path = ../bgfx/examples/runtime/textures; sourceTree = "<group>"; };
+		BF1A80341BE5F510001B4DCF /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shaders; path = ../bgfx/examples/runtime/shaders; sourceTree = "<group>"; };
+		BF1A80361BE5F554001B4DCF /* meshes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = meshes; path = ../bgfx/examples/runtime/meshes; sourceTree = "<group>"; };
 		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "../bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
 		BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "example-common.xcodeproj"; path = "../bgfx/.build/projects/xcode4-osx/example-common.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +93,7 @@
 		28F4183720E11FD901282985 /* example-04-mesh */ = {
 			isa = PBXGroup;
 			children = (
+				BF1A802F1BE5F363001B4DCF /* assets */,
 				BF1A80131BE4FD95001B4DCF /* core */,
 				BF1A80141BE4FDA3001B4DCF /* tests */,
 				BF1A80121BE4FD8B001B4DCF /* s7 */,
@@ -143,6 +152,17 @@
 				BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */,
 			);
 			name = tests;
+			sourceTree = "<group>";
+		};
+		BF1A802F1BE5F363001B4DCF /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				BF1A80361BE5F554001B4DCF /* meshes */,
+				BF1A80341BE5F510001B4DCF /* shaders */,
+				BF1A80301BE5F390001B4DCF /* font */,
+				BF1A80311BE5F390001B4DCF /* textures */,
+			);
+			name = assets;
 			sourceTree = "<group>";
 		};
 		BFC62FE91BE4EBBF00C21B7D /* Products */ = {
@@ -241,8 +261,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF1A80281BE4FDD1001B4DCF /* vs_mesh.sc in Resources */,
+				BF1A80331BE5F390001B4DCF /* textures in Resources */,
 				BF1A80221BE4FDD1001B4DCF /* fs_mesh.sc in Resources */,
+				BF1A80351BE5F510001B4DCF /* shaders in Resources */,
+				BF1A80371BE5F554001B4DCF /* meshes in Resources */,
 				BF1A80271BE4FDD1001B4DCF /* varying.def.sc in Resources */,
+				BF1A80321BE5F390001B4DCF /* font in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +350,7 @@
 					../bgfx/3rdparty,
 					../bgfx/examples/common,
 				);
-				OBJROOT = ../../osx_universal/bin/Universal/Debug/s7;
+				OBJROOT = osx_universal/bin/Universal/Debug/s7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-Wshadow",
@@ -347,7 +371,7 @@
 				);
 				SDKROOT = macosx;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
-				SYMROOT = ../../osx_universal/bin;
+				SYMROOT = osx_universal/bin;
 			};
 			name = Debug;
 		};
@@ -399,7 +423,7 @@
 					../bgfx/3rdparty,
 					../bgfx/examples/common,
 				);
-				OBJROOT = ../../osx_universal/bin/Universal/Release/s7;
+				OBJROOT = osx_universal/bin/Universal/Release/s7;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-Wshadow",
@@ -420,7 +444,7 @@
 				);
 				SDKROOT = macosx;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
-				SYMROOT = ../../osx_universal/bin;
+				SYMROOT = osx_universal/bin;
 			};
 			name = Release;
 		};
