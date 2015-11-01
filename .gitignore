@@ -2,6 +2,7 @@
 *.opensdf
 *.vcxproj.user
 *.sdf
+*.xcuserstate
 
 bin/
 obj/
