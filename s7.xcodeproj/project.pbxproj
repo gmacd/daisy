@@ -24,8 +24,9 @@
 		BF1A80451BE654FF001B4DCF /* core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80151BE4FDC0001B4DCF /* core.cpp */; };
 		BF1A80461BE654FF001B4DCF /* core.h in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80161BE4FDC0001B4DCF /* core.h */; };
 		BF1A80471BE654FF001B4DCF /* s7tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */; };
-		BF1A80511BE656E3001B4DCF /* s7benchmarks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */; };
 		BF1A80521BE6573F001B4DCF /* s7benchmarks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */; };
+		BF1A80571BE8021E001B4DCF /* chrono_io.hpp in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80551BE8021E001B4DCF /* chrono_io.hpp */; };
+		BF1A80581BE8021E001B4DCF /* ratio_io.hpp in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80561BE8021E001B4DCF /* ratio_io.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,9 @@
 		BF1A80361BE5F554001B4DCF /* meshes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = meshes; path = ../bgfx/examples/runtime/meshes; sourceTree = "<group>"; };
 		BF1A803E1BE6548C001B4DCF /* s7test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = s7test; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s7benchmarks.cpp; path = s7tests/src/s7benchmarks.cpp; sourceTree = "<group>"; };
+		BF1A80541BE8021E001B4DCF /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = third/include/catch.hpp; sourceTree = "<group>"; };
+		BF1A80551BE8021E001B4DCF /* chrono_io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = chrono_io.hpp; path = third/include/chrono_io.hpp; sourceTree = "<group>"; };
+		BF1A80561BE8021E001B4DCF /* ratio_io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ratio_io.hpp; path = third/include/ratio_io.hpp; sourceTree = "<group>"; };
 		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "../bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
 		BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "example-common.xcodeproj"; path = "../bgfx/.build/projects/xcode4-osx/example-common.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +127,7 @@
 				BF1A80131BE4FD95001B4DCF /* core */,
 				BF1A80141BE4FDA3001B4DCF /* tests */,
 				BF1A80121BE4FD8B001B4DCF /* s7 */,
+				BF1A80531BE8020F001B4DCF /* third */,
 				33EC2073479654CD404C48BF /* Products */,
 				7E52275D0E47769C010B3156 /* Projects */,
 			);
@@ -191,6 +196,16 @@
 				BF1A80311BE5F390001B4DCF /* textures */,
 			);
 			name = assets;
+			sourceTree = "<group>";
+		};
+		BF1A80531BE8020F001B4DCF /* third */ = {
+			isa = PBXGroup;
+			children = (
+				BF1A80541BE8021E001B4DCF /* catch.hpp */,
+				BF1A80551BE8021E001B4DCF /* chrono_io.hpp */,
+				BF1A80561BE8021E001B4DCF /* ratio_io.hpp */,
+			);
+			name = third;
 			sourceTree = "<group>";
 		};
 		BFC62FE91BE4EBBF00C21B7D /* Products */ = {
@@ -312,9 +327,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF1A80281BE4FDD1001B4DCF /* vs_mesh.sc in Resources */,
+				BF1A80571BE8021E001B4DCF /* chrono_io.hpp in Resources */,
 				BF1A80331BE5F390001B4DCF /* textures in Resources */,
 				BF1A80221BE4FDD1001B4DCF /* fs_mesh.sc in Resources */,
 				BF1A80351BE5F510001B4DCF /* shaders in Resources */,
+				BF1A80581BE8021E001B4DCF /* ratio_io.hpp in Resources */,
 				BF1A80371BE5F554001B4DCF /* meshes in Resources */,
 				BF1A80271BE4FDD1001B4DCF /* varying.def.sc in Resources */,
 				BF1A80321BE5F390001B4DCF /* font in Resources */,
@@ -333,7 +350,6 @@
 				BF1A80251BE4FDD1001B4DCF /* mesh.cpp in Sources */,
 				BF1A80231BE4FDD1001B4DCF /* main.cpp in Sources */,
 				BF1A80261BE4FDD1001B4DCF /* runner.cpp in Sources */,
-				BF1A80511BE656E3001B4DCF /* s7benchmarks.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

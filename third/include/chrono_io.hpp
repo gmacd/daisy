@@ -13,7 +13,7 @@
     chrono_io synopsis
 
 #include <chrono>
-#include <ratio_io>
+#include <ratio_io.hpp>
 
 namespace std
 {
@@ -136,7 +136,7 @@ template<class CharT>
 */
 
 #include <chrono>
-#include "ratio_io"
+#include "ratio_io.hpp"
 
 _LIBCPP_BEGIN_NAMESPACE_STD
 

@@ -12,7 +12,7 @@
 
     ratio_io synopsis
 
-#include <ratio>
+#include <ratio.hpp>
 #include <string>
 
 namespace std

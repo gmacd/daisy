@@ -1,23 +1,30 @@
 #include <chrono>
-#include <chrono_io>
+#include <chrono_io.hpp>
 #include <catch.hpp>
 
 #include "core.h"
 
-using namespace std;
 
-TEST_CASE("Benchmark factorial", "[bench]") {
-    auto numIterations = 10000;
+void Bench(int numIterations, std::function<void(int)> fn)
+{
     typedef std::chrono::high_resolution_clock Clock;
     
     auto start = Clock::now();
     
     double total = 0;
     for (int i = 0; i < numIterations; i++) {
-        total += s7::Sqrt((float)i + 1);
+        fn(i);
     }
     
     auto end = Clock::now();
     
-    WARN("Took " << (end-start) << "s to execute " << numIterations << " iterations.");
+    auto duration = std::chrono::duration_cast<std::chrono::duration<double>>(end - start);
+    
+    WARN("Took " << duration << " to execute " << numIterations << " iterations.");
+}
+
+TEST_CASE("Benchmark factorial", "[bench]") {
+    Bench(100000000, [](int iterIdx) { s7::Sqrt((float)iterIdx + 1); });
+    Bench(100000000, [](int iterIdx) { s7::Sqrt((float)iterIdx + 1); });
+    Bench(100000000, [](int iterIdx) { s7::Sqrt((float)iterIdx + 1); });
 }
