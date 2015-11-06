@@ -165,8 +165,7 @@ namespace s7 {
 			bgfx::frame();
 		}
 
-		mesh->Unload();
-		delete mesh;
+		mesh.Unload();
 
 		bgfx::destroyProgram(program);
 		bgfx::destroyUniform(u_time);
