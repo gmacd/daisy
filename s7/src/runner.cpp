@@ -27,7 +27,6 @@ namespace s7 {
 	{
 		auto u_time = bgfx::createUniform("u_time", bgfx::UniformType::Vec4);
 		auto program = LoadProgram("vs_mesh", "fs_mesh");
-		auto mesh = Mesh::Create("meshes/bunny.bin");
 
 		///////////////////////////////////////////////////////////
 		// Meshgen
@@ -38,8 +37,8 @@ namespace s7 {
 		myDecl.add(bgfx::Attrib::Normal, 4, bgfx::AttribType::Uint8, true, true);
 		myDecl.end();
 
-		Mesh mesh2(myDecl, 1);
-		auto& group = mesh2.GetGroup(0);
+		Mesh mesh(myDecl, 1);
+		auto& group = mesh.GetGroup(0);
 
 		// Allocate & assign vertices (and normals)
 		// TODO Work out normals.
@@ -87,7 +86,7 @@ namespace s7 {
 		}
 
 		// Calc bounds for prim and group
-		//mesh2.CalcBounds();
+		mesh.CalcBounds();
 
 		///////////////////////////////////////////////////////////
 		// End of Meshgen
@@ -159,8 +158,7 @@ namespace s7 {
 			float mtx[16];
 			bx::mtxRotateXY(mtx, 0.0f, time*0.37f);
 
-			//mesh->Submit(0, program, mtx);
-			mesh2.Submit(0, program, mtx);
+			mesh.Submit(0, program, mtx);
 
 			// Advance to next frame. Rendering thread will be kicked to
 			// process submitted rendering primitives.

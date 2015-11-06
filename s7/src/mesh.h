@@ -69,6 +69,8 @@ namespace s7 {
 		Mesh(bgfx::VertexDecl decl, int numGroups);
 
 		Group& GetGroup(int i);
+        
+        void CalcBounds();
 
 		void Unload();
 

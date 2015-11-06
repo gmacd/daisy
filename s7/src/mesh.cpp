@@ -38,7 +38,6 @@ namespace s7 {
 
 	void Group::CalcBounds()
 	{
-
 	}
 
 	Mesh::Mesh()
@@ -66,6 +65,11 @@ namespace s7 {
 		return mesh;
 	}
 
+    void Mesh::CalcBounds()
+    {
+        for (auto& group: _groups)
+            group.CalcBounds();
+    }
 
 	void Mesh::Load(bx::ReaderSeekerI* _reader)
 	{

@@ -124,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				BF1A802F1BE5F363001B4DCF /* assets */,
+				BF429DFF1BEBF95E00E8BA80 /* shaders */,
 				BF1A80131BE4FD95001B4DCF /* core */,
 				BF1A80141BE4FDA3001B4DCF /* tests */,
 				BF1A80121BE4FD8B001B4DCF /* s7 */,
@@ -155,7 +156,6 @@
 		BF1A80121BE4FD8B001B4DCF /* s7 */ = {
 			isa = PBXGroup;
 			children = (
-				BF1A80181BE4FDD1001B4DCF /* fs_mesh.sc */,
 				BF1A80191BE4FDD1001B4DCF /* main.cpp */,
 				BF1A801A1BE4FDD1001B4DCF /* material.cpp */,
 				BF1A801B1BE4FDD1001B4DCF /* material.h */,
@@ -163,8 +163,6 @@
 				BF1A801D1BE4FDD1001B4DCF /* mesh.h */,
 				BF1A801E1BE4FDD1001B4DCF /* runner.cpp */,
 				BF1A801F1BE4FDD1001B4DCF /* runner.h */,
-				BF1A80201BE4FDD1001B4DCF /* varying.def.sc */,
-				BF1A80211BE4FDD1001B4DCF /* vs_mesh.sc */,
 			);
 			name = s7;
 			sourceTree = "<group>";
@@ -206,6 +204,16 @@
 				BF1A80561BE8021E001B4DCF /* ratio_io.hpp */,
 			);
 			name = third;
+			sourceTree = "<group>";
+		};
+		BF429DFF1BEBF95E00E8BA80 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				BF1A80181BE4FDD1001B4DCF /* fs_mesh.sc */,
+				BF1A80201BE4FDD1001B4DCF /* varying.def.sc */,
+				BF1A80211BE4FDD1001B4DCF /* vs_mesh.sc */,
+			);
+			name = shaders;
 			sourceTree = "<group>";
 		};
 		BFC62FE91BE4EBBF00C21B7D /* Products */ = {

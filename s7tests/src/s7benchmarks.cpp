@@ -24,7 +24,5 @@ void Bench(int numIterations, std::function<void(int)> fn)
 }
 
 TEST_CASE("Benchmark factorial", "[bench]") {
-    Bench(100000000, [](int iterIdx) { s7::Sqrt((float)iterIdx + 1); });
-    Bench(100000000, [](int iterIdx) { s7::Sqrt((float)iterIdx + 1); });
-    Bench(100000000, [](int iterIdx) { s7::Sqrt((float)iterIdx + 1); });
+    //Bench(10000000, [](int iterIdx) { s7::Sqrt((float)iterIdx + 1); });
 }
