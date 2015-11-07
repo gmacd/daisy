@@ -122,7 +122,7 @@ namespace s7 {
 			bgfx::dbgTextPrintf(0, 1, 0x4f, "s7");
 			bgfx::dbgTextPrintf(0, 2, 0x0f, "Frame: % 7.3f[ms]", double(frameTime)*toMs);
 
-            Vec3f target(0, 1, 0);
+            Vec3f target(0, 0, 0);
             Vec3f eye(0, 1, -2.5f);
             
             Mat44 viewMat, projMat;

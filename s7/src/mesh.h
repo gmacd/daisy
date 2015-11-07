@@ -38,7 +38,6 @@ namespace s7 {
 
 		Sphere m_sphere;
 		Aabb m_aabb;
-		Obb m_obb;
 	};
 
 	class Group
@@ -46,7 +45,6 @@ namespace s7 {
 	public:
 		Sphere _sphere;
 		Aabb _aabb;
-		Obb _obb;
 
 		stl::vector<Primitive> _prims;
 
@@ -62,9 +60,6 @@ namespace s7 {
 	class Mesh
 	{
 	public:
-		static Mesh* Create(const char* filePath);
-		static Mesh* Create(bx::ReaderSeekerI* reader);
-
 		Mesh();
 		Mesh(bgfx::VertexDecl decl, int numGroups);
 
@@ -89,8 +84,6 @@ namespace s7 {
 	private:
 		bgfx::VertexDecl _decl;
 		stl::vector<Group> _groups;
-
-		void Load(bx::ReaderSeekerI* _reader);
 	};
 
 	MeshState* meshStateCreate();

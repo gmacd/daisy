@@ -6,28 +6,28 @@ namespace s7 {
 
 	struct Vec3f
 	{
-		float _x, _y, _z;
+		float x, y, z;
 
-		Vec3f() : _x(0), _y(0), _z(0) {}
-		Vec3f(float x, float y, float z) : _x(x), _y(y), _z(z) {}
+		Vec3f() : x(0), y(0), z(0) {}
+		Vec3f(float xx, float yy, float zz) : x(xx), y(yy), z(zz) {}
 
-		void Set(float x, float y, float z) { _x = x, _y = y, _z = z; }
+		void Set(float xx, float yy, float zz) { x = xx, y = yy, z = zz; }
         
-        bool operator==(const Vec3f& v) const { return this == &v || (_x == v._x && _y == v._y && _z == v._z); }
+        bool operator==(const Vec3f& v) const { return this == &v || (x == v.x && y == v.y && z == v.z); }
         
-		Vec3f operator+(const Vec3f& v) const { return Vec3f(_x + v._x, _y + v._y, _z + v._z); }
-		Vec3f operator-(const Vec3f& v) const { return Vec3f(_x - v._x, _y - v._y, _z - v._z); }
-		Vec3f operator*(const Vec3f& v) const { return Vec3f(_x * v._x, _y * v._y, _z * v._z); }
-		Vec3f operator/(const Vec3f& v) const { return Vec3f(_x / v._x, _y / v._y, _z / v._z); }
+		Vec3f operator+(const Vec3f& v) const { return Vec3f(x + v.x, y + v.y, z + v.z); }
+		Vec3f operator-(const Vec3f& v) const { return Vec3f(x - v.x, y - v.y, z - v.z); }
+		Vec3f operator*(const Vec3f& v) const { return Vec3f(x * v.x, y * v.y, z * v.z); }
+		Vec3f operator/(const Vec3f& v) const { return Vec3f(x / v.x, y / v.y, z / v.z); }
 
-		Vec3f operator+(float a) const { return Vec3f(_x + a, _y + a, _z + a); }
-		Vec3f operator-(float a) const { return Vec3f(_x - a, _y - a, _z - a); }
-		Vec3f operator*(float a) const { return Vec3f(_x * a, _y * a, _z * a); }
-		Vec3f operator/(float a) const { return Vec3f(_x / a, _y / a, _z / a); }
+		Vec3f operator+(float a) const { return Vec3f(x + a, y + a, z + a); }
+		Vec3f operator-(float a) const { return Vec3f(x - a, y - a, z - a); }
+		Vec3f operator*(float a) const { return Vec3f(x * a, y * a, z * a); }
+		Vec3f operator/(float a) const { return Vec3f(x / a, y / a, z / a); }
         
-        friend Vec3f operator+(float a, const Vec3f& v) { return Vec3f(a + v._x, a + v._y, a + v._z); }
-        friend Vec3f operator-(float a, const Vec3f& v) { return Vec3f(a - v._x, a - v._y, a - v._z); }
-        friend Vec3f operator*(float a, const Vec3f& v) { return Vec3f(a * v._x, a * v._y, a * v._z); }
+        friend Vec3f operator+(float a, const Vec3f& v) { return Vec3f(a + v.x, a + v.y, a + v.z); }
+        friend Vec3f operator-(float a, const Vec3f& v) { return Vec3f(a - v.x, a - v.y, a - v.z); }
+        friend Vec3f operator*(float a, const Vec3f& v) { return Vec3f(a * v.x, a * v.y, a * v.z); }
         
         Vec3f& Normalize();
         
@@ -46,22 +46,22 @@ namespace s7 {
 
 	struct Vec4u8
 	{
-		uint8_t _x, _y, _z, _w;
+		uint8_t x, y, z, w;
 
-		Vec4u8() : _x(0), _y(0), _z(0), _w(0) {}
-		Vec4u8(uint8_t x, uint8_t y, uint8_t z, uint8_t w) : _x(x), _y(y), _z(z), _w(w) {}
+		Vec4u8() : x(0), y(0), z(0), w(0) {}
+		Vec4u8(uint8_t xx, uint8_t yy, uint8_t zz, uint8_t ww) : x(xx), y(yy), z(zz), w(ww) {}
 
-		void Set(uint8_t x, uint8_t y, uint8_t z, uint8_t w) { _x = x, _y = y, _z = z, _w = w; }
+		void Set(uint8_t xx, uint8_t yy, uint8_t zz, uint8_t ww) { x = xx, y = yy, z = zz, w = ww; }
 
-		Vec4u8 operator+(const Vec4u8& v) const { return Vec4u8(_x + v._x, _y + v._y, _z + v._z, _w + v._w); }
-		Vec4u8 operator-(const Vec4u8& v) const { return Vec4u8(_x - v._x, _y - v._y, _z - v._z, _w - v._w); }
-		Vec4u8 operator*(const Vec4u8& v) const { return Vec4u8(_x * v._x, _y * v._y, _z * v._z, _w * v._w); }
-		Vec4u8 operator/(const Vec4u8& v) const { return Vec4u8(_x / v._x, _y / v._y, _z / v._z, _w / v._w); }
+		Vec4u8 operator+(const Vec4u8& v) const { return Vec4u8(x + v.x, y + v.y, z + v.z, w + v.w); }
+		Vec4u8 operator-(const Vec4u8& v) const { return Vec4u8(x - v.x, y - v.y, z - v.z, w - v.w); }
+		Vec4u8 operator*(const Vec4u8& v) const { return Vec4u8(x * v.x, y * v.y, z * v.z, w * v.w); }
+		Vec4u8 operator/(const Vec4u8& v) const { return Vec4u8(x / v.x, y / v.y, z / v.z, w / v.w); }
 
-		Vec4u8 operator+(uint8_t a) const { return Vec4u8(_x + a, _y + a, _z + a, _w + a); }
-		Vec4u8 operator-(uint8_t a) const { return Vec4u8(_x - a, _y - a, _z - a, _w - a); }
-		Vec4u8 operator*(uint8_t a) const { return Vec4u8(_x * a, _y * a, _z * a, _w * a); }
-		Vec4u8 operator/(uint8_t a) const { return Vec4u8(_x / a, _y / a, _z / a, _w / a); }
+		Vec4u8 operator+(uint8_t a) const { return Vec4u8(x + a, y + a, z + a, w + a); }
+		Vec4u8 operator-(uint8_t a) const { return Vec4u8(x - a, y - a, z - a, w - a); }
+		Vec4u8 operator*(uint8_t a) const { return Vec4u8(x * a, y * a, z * a, w * a); }
+		Vec4u8 operator/(uint8_t a) const { return Vec4u8(x / a, y / a, z / a, w / a); }
 	};
     
     
@@ -95,12 +95,6 @@ namespace s7 {
     };
 
     
-	struct Matrix44
-	{
-		float _m[16];
-	};
-
-
 	struct Aabb
 	{
 		Vec3f _min;
@@ -108,12 +102,6 @@ namespace s7 {
 
 		Aabb(): _min(), _max() {}
 		Aabb(const Vec3f& min, const Vec3f& max) : _min(min), _max(max) {}
-	};
-
-
-	struct Obb
-	{
-		Matrix44 _m;
 	};
 
 

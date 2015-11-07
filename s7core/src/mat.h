@@ -8,7 +8,7 @@ namespace s7 {
 
     struct Mat44
     {
-        std::array<float, 16> _m;
+        std::array<float, 16> m;
         
         Mat44();
         Mat44(float e00, float e01, float e02, float e03,

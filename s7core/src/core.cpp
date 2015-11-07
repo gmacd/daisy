@@ -17,44 +17,44 @@ namespace s7 {
 
     float Vec3f::Len() const
     {
-        return Sqrt(_x*_x + _y*_y + _z*_z);
+        return Sqrt(x*x + y*y + z*z);
     }
 
     Vec3f& Vec3f::Normalize()
     {
         auto len = Len();
-        _x /= len;
-        _y /= len;
-        _z /= len;
+        x /= len;
+        y /= len;
+        z /= len;
         return *this;
     }
     
     Vec3f Vec3f::Normal() const
     {
         auto len = Len();
-        return Vec3f(_x/len, _y/len, _z/len);
+        return Vec3f(x/len, y/len, z/len);
     }
     
     float Vec3f::Dot(const Vec3f& v) const
     {
-        return _x*v._x + _y*v._y + _z*v._z;
+        return x*v.x + y*v.y + z*v.z;
     }
 
     Vec3f Vec3f::Cross(const Vec3f& v) const
     {
         return Vec3f(
-            _y*v._z - _z*v._y,
-            _z*v._x - _x*v._z,
-            _x*v._y - _y*v._x
+            y*v.z - z*v.y,
+            z*v.x - x*v.z,
+            x*v.y - y*v.x
         );
     }
 
     Vec3f Vec3f::MidPoint(const Vec3f& v) const
     {
         return Vec3f(
-            (_x + v._x) / 2.0f,
-            (_y + v._y) / 2.0f,
-            (_z + v._z) / 2.0f);
+            (x + v.x) / 2.0f,
+            (y + v.y) / 2.0f,
+            (z + v.z) / 2.0f);
     }
 
     const Vec3f Vec3f::XAxis(1, 0, 0);
@@ -94,7 +94,7 @@ namespace s7 {
 	float Distance(const Vec3f& v1, const Vec3f& v2)
 	{
 		auto a = v2 - v1;
-		return Sqrt(a._x*a._x + a._y*a._y + a._z*a._z);
+		return Sqrt(a.x*a.x + a.y*a.y + a.z*a.z);
 	}
 
 	Aabb CreateAabbFromPoints(const Vec3f* pts, size_t numPts)
@@ -105,14 +105,14 @@ namespace s7 {
 		{
 			auto& pt = pts[i];
 
-			if      (pt._x < box._min._x) box._min._x = pt._x;
-			else if (pt._x > box._max._x) box._max._x = pt._x;
+			if      (pt.x < box._min.x) box._min.x = pt.x;
+			else if (pt.x > box._max.x) box._max.x = pt.x;
 
-			if      (pt._y < box._min._y) box._min._y = pt._y;
-			else if (pt._y > box._max._y) box._max._y = pt._y;
+			if      (pt.y < box._min.y) box._min.y = pt.y;
+			else if (pt.y > box._max.y) box._max.y = pt.y;
 
-			if      (pt._z < box._min._z) box._min._z = pt._z;
-			else if (pt._z > box._max._z) box._max._z = pt._z;
+			if      (pt.z < box._min.z) box._min.z = pt.z;
+			else if (pt.z > box._max.z) box._max.z = pt.z;
 		}
 
 		return box;
@@ -175,21 +175,21 @@ namespace s7 {
     bool Intersect(const Sphere& s, const Line& l, Vec3f& i1, Vec3f& i2)
     {
         // http://paulbourke.net/geometry/circlesphere/index.html#linesphere
-        float a = (l._b._x - l._a._x) * (l._b._x - l._a._x)
-                + (l._b._y - l._a._y) * (l._b._y - l._a._y)
-                + (l._b._z - l._a._z) * (l._b._z - l._a._z);
-        float b = 2.0f * (((l._b._x - l._a._x) * (l._a._x - s._centre._x))
-                        + ((l._b._y - l._a._y) * (l._a._y - s._centre._y))
-                        + ((l._b._z - l._a._z) * (l._a._z - s._centre._z)));
-        float c = s._centre._x * s._centre._x
-                + s._centre._y * s._centre._y
-                + s._centre._z * s._centre._z
-                + l._a._x * l._a._x
-                + l._a._y * l._a._y
-                + l._a._z * l._a._z
-                - 2.0f * (s._centre._x * l._a._x
-                          + s._centre._y * l._a._y
-                          + s._centre._z * l._a._z)
+        float a = (l._b.x - l._a.x) * (l._b.x - l._a.x)
+                + (l._b.y - l._a.y) * (l._b.y - l._a.y)
+                + (l._b.z - l._a.z) * (l._b.z - l._a.z);
+        float b = 2.0f * (((l._b.x - l._a.x) * (l._a.x - s._centre.x))
+                        + ((l._b.y - l._a.y) * (l._a.y - s._centre.y))
+                        + ((l._b.z - l._a.z) * (l._a.z - s._centre.z)));
+        float c = s._centre.x * s._centre.x
+                + s._centre.y * s._centre.y
+                + s._centre.z * s._centre.z
+                + l._a.x * l._a.x
+                + l._a.y * l._a.y
+                + l._a.z * l._a.z
+                - 2.0f * (s._centre.x * l._a.x
+                          + s._centre.y * l._a.y
+                          + s._centre.z * l._a.z)
                 - s._radius * s._radius;
         
         float discriminant = b*b - 4.0f*a*c;
