@@ -27,6 +27,7 @@
 		BF1A80521BE6573F001B4DCF /* s7benchmarks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */; };
 		BF1A80571BE8021E001B4DCF /* chrono_io.hpp in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80551BE8021E001B4DCF /* chrono_io.hpp */; };
 		BF1A80581BE8021E001B4DCF /* ratio_io.hpp in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80561BE8021E001B4DCF /* ratio_io.hpp */; };
+		BF429E021BEDDDCB00E8BA80 /* mat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E001BEDDDCB00E8BA80 /* mat.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		BF1A80541BE8021E001B4DCF /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = third/include/catch.hpp; sourceTree = "<group>"; };
 		BF1A80551BE8021E001B4DCF /* chrono_io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = chrono_io.hpp; path = third/include/chrono_io.hpp; sourceTree = "<group>"; };
 		BF1A80561BE8021E001B4DCF /* ratio_io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ratio_io.hpp; path = third/include/ratio_io.hpp; sourceTree = "<group>"; };
+		BF429E001BEDDDCB00E8BA80 /* mat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mat.cpp; path = s7core/src/mat.cpp; sourceTree = "<group>"; };
+		BF429E011BEDDDCB00E8BA80 /* mat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mat.h; path = s7core/src/mat.h; sourceTree = "<group>"; };
 		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "../bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
 		BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "example-common.xcodeproj"; path = "../bgfx/.build/projects/xcode4-osx/example-common.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +175,8 @@
 			children = (
 				BF1A80151BE4FDC0001B4DCF /* core.cpp */,
 				BF1A80161BE4FDC0001B4DCF /* core.h */,
+				BF429E001BEDDDCB00E8BA80 /* mat.cpp */,
+				BF429E011BEDDDCB00E8BA80 /* mat.h */,
 			);
 			name = core;
 			sourceTree = "<group>";
@@ -353,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF429E021BEDDDCB00E8BA80 /* mat.cpp in Sources */,
 				BF1A80241BE4FDD1001B4DCF /* material.cpp in Sources */,
 				BF1A80171BE4FDC0001B4DCF /* core.cpp in Sources */,
 				BF1A80251BE4FDD1001B4DCF /* mesh.cpp in Sources */,

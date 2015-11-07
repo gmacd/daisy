@@ -29,11 +29,18 @@ namespace s7 {
         friend Vec3f operator-(float a, const Vec3f& v) { return Vec3f(a - v._x, a - v._y, a - v._z); }
         friend Vec3f operator*(float a, const Vec3f& v) { return Vec3f(a * v._x, a * v._y, a * v._z); }
         
-        float Len() const;
         Vec3f& Normalize();
-        float Dot(const Vec3f& v);
+        
+        float Len() const;
+        Vec3f Normal() const;
+        float Dot(const Vec3f& v) const;
+        Vec3f Cross(const Vec3f& v) const;
         
         Vec3f MidPoint(const Vec3f&v) const;
+        
+        static const Vec3f XAxis;
+        static const Vec3f YAxis;
+        static const Vec3f ZAxis;
 	};
 
 
@@ -121,7 +128,13 @@ namespace s7 {
 
         void Set(const Vec3f& c, float r) { _centre = c, _radius = r; }
     };
+    
+    static const float Pi     = 3.14159265358979323846f;
+	static const float InvPi  = 1.0f / 3.14159265358979323846f;
+	static const float PiHalf = 1.57079632679489661923f;
 
+	extern float toRad(float deg);
+	extern float toDeg(float rad);
 
     extern float AlmostEquals(float a, float b);
 	extern float Sqrt(float f);

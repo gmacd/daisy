@@ -3,6 +3,7 @@
 #include "common.h"
 #include "material.h"
 #include "mesh.h"
+#include "mat.h"
 
 namespace s7 {
 
@@ -121,47 +122,21 @@ namespace s7 {
 			bgfx::dbgTextPrintf(0, 1, 0x4f, "s7");
 			bgfx::dbgTextPrintf(0, 2, 0x0f, "Frame: % 7.3f[ms]", double(frameTime)*toMs);
 
-			float at[3] = { 0.0f, 1.0f,  0.0f };
-			float eye[3] = { 0.0f, 1.0f, -2.5f };
+            Vec3f target(0, 1, 0);
+            Vec3f eye(0, 1, -2.5f);
+            
+            Mat44 viewMat, projMat;
+            viewMat.LookAt(eye, target, Vec3f::YAxis);
+            projMat.PerspectiveProjection(60.0f, float(_width) / float(_height), 0.1f, 100.0f);
+            bgfx::setViewTransform(0, viewMat.Data(), projMat.Data());
 
-			// Set view and projection matrix for view 0.
-			const auto* hmd = bgfx::getHMD();
-			if (NULL != hmd && 0 != (hmd->flags & BGFX_HMD_RENDERING))
-			{
-				float view[16];
-				bx::mtxQuatTranslationHMD(view, hmd->eye[0].rotation, eye);
+            // Set view 0 default viewport.
+            bgfx::setViewRect(0, 0, 0, _width, _height);
 
-				float proj[16];
-				bx::mtxProj(proj, hmd->eye[0].fov, 0.1f, 100.0f);
+            Mat44 mtx;
+            mtx.RotateXY(0.0f, time*0.37f);
+			mesh.Submit(0, program, mtx.Data());
 
-				bgfx::setViewTransform(0, view, proj);
-
-				// Set view 0 default viewport.
-				//
-				// Use HMD's width/height since HMD's internal frame buffer size
-				// might be much larger than window size.
-				bgfx::setViewRect(0, 0, 0, hmd->width, hmd->height);
-			}
-			else
-			{
-				float view[16];
-				bx::mtxLookAt(view, eye, at);
-
-				float proj[16];
-				bx::mtxProj(proj, 60.0f, float(_width) / float(_height), 0.1f, 100.0f);
-				bgfx::setViewTransform(0, view, proj);
-
-				// Set view 0 default viewport.
-				bgfx::setViewRect(0, 0, 0, _width, _height);
-			}
-
-			float mtx[16];
-			bx::mtxRotateXY(mtx, 0.0f, time*0.37f);
-
-			mesh.Submit(0, program, mtx);
-
-			// Advance to next frame. Rendering thread will be kicked to
-			// process submitted rendering primitives.
 			bgfx::frame();
 		}
 

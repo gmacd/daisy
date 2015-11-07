@@ -5,6 +5,16 @@
 
 namespace s7 {
 
+	float toRad(float deg)
+	{
+        return deg * Pi / 180.0f;
+	}
+
+	float toDeg(float rad)
+	{
+		return rad * 180.0f / Pi;
+	}
+
     float Vec3f::Len() const
     {
         return Sqrt(_x*_x + _y*_y + _z*_z);
@@ -19,18 +29,37 @@ namespace s7 {
         return *this;
     }
     
-    float Vec3f::Dot(const Vec3f& v)
+    Vec3f Vec3f::Normal() const
+    {
+        auto len = Len();
+        return Vec3f(_x/len, _y/len, _z/len);
+    }
+    
+    float Vec3f::Dot(const Vec3f& v) const
     {
         return _x*v._x + _y*v._y + _z*v._z;
+    }
+
+    Vec3f Vec3f::Cross(const Vec3f& v) const
+    {
+        return Vec3f(
+            _y*v._z - _z*v._y,
+            _z*v._x - _x*v._z,
+            _x*v._y - _y*v._x
+        );
     }
 
     Vec3f Vec3f::MidPoint(const Vec3f& v) const
     {
         return Vec3f(
-                     (_x + v._x) / 2.0f,
-                     (_y + v._y) / 2.0f,
-                     (_z + v._z) / 2.0f);
+            (_x + v._x) / 2.0f,
+            (_y + v._y) / 2.0f,
+            (_z + v._z) / 2.0f);
     }
+
+    const Vec3f Vec3f::XAxis(1, 0, 0);
+    const Vec3f Vec3f::YAxis(0, 1, 0);
+    const Vec3f Vec3f::ZAxis(0, 0, 1);
 
     // Direction is not normalized
     Ray Ray::RayFromPoints(const Vec3f& origin, const Vec3f& other)
