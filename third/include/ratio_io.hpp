@@ -33,6 +33,9 @@ struct ratio_string
 #include <string>
 #include <sstream>
 
+// CHange by Graham
+#define HAS_UNICODE_SUPPORT 0
+
 _LIBCPP_BEGIN_NAMESPACE_STD
 
 template <class _Ratio, class _CharT>

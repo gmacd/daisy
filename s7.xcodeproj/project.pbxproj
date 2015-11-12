@@ -22,12 +22,15 @@
 		BF1A80351BE5F510001B4DCF /* shaders in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80341BE5F510001B4DCF /* shaders */; };
 		BF1A80371BE5F554001B4DCF /* meshes in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80361BE5F554001B4DCF /* meshes */; };
 		BF1A80451BE654FF001B4DCF /* core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80151BE4FDC0001B4DCF /* core.cpp */; };
-		BF1A80461BE654FF001B4DCF /* core.h in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80161BE4FDC0001B4DCF /* core.h */; };
 		BF1A80471BE654FF001B4DCF /* s7tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */; };
 		BF1A80521BE6573F001B4DCF /* s7benchmarks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */; };
 		BF1A80571BE8021E001B4DCF /* chrono_io.hpp in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80551BE8021E001B4DCF /* chrono_io.hpp */; };
 		BF1A80581BE8021E001B4DCF /* ratio_io.hpp in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80561BE8021E001B4DCF /* ratio_io.hpp */; };
 		BF429E021BEDDDCB00E8BA80 /* mat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E001BEDDDCB00E8BA80 /* mat.cpp */; };
+		BF429E051BEF29B700E8BA80 /* genmesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E031BEF29B700E8BA80 /* genmesh.cpp */; };
+		BF429E081BEFE57600E8BA80 /* genmeshtests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E061BEFE57600E8BA80 /* genmeshtests.cpp */; };
+		BF429E091BEFF17D00E8BA80 /* genmeshtests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E061BEFE57600E8BA80 /* genmeshtests.cpp */; };
+		BF429E0A1BEFF18900E8BA80 /* genmesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E031BEF29B700E8BA80 /* genmesh.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +102,9 @@
 		BF1A80561BE8021E001B4DCF /* ratio_io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ratio_io.hpp; path = third/include/ratio_io.hpp; sourceTree = "<group>"; };
 		BF429E001BEDDDCB00E8BA80 /* mat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mat.cpp; path = s7core/src/mat.cpp; sourceTree = "<group>"; };
 		BF429E011BEDDDCB00E8BA80 /* mat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mat.h; path = s7core/src/mat.h; sourceTree = "<group>"; };
+		BF429E031BEF29B700E8BA80 /* genmesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = genmesh.cpp; path = s7core/src/genmesh.cpp; sourceTree = "<group>"; };
+		BF429E041BEF29B700E8BA80 /* genmesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = genmesh.h; path = s7core/src/genmesh.h; sourceTree = "<group>"; };
+		BF429E061BEFE57600E8BA80 /* genmeshtests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = genmeshtests.cpp; path = s7tests/src/genmeshtests.cpp; sourceTree = "<group>"; };
 		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "../bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
 		BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "example-common.xcodeproj"; path = "../bgfx/.build/projects/xcode4-osx/example-common.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,6 +183,8 @@
 				BF1A80161BE4FDC0001B4DCF /* core.h */,
 				BF429E001BEDDDCB00E8BA80 /* mat.cpp */,
 				BF429E011BEDDDCB00E8BA80 /* mat.h */,
+				BF429E031BEF29B700E8BA80 /* genmesh.cpp */,
+				BF429E041BEF29B700E8BA80 /* genmesh.h */,
 			);
 			name = core;
 			sourceTree = "<group>";
@@ -186,6 +194,7 @@
 			children = (
 				BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */,
 				BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */,
+				BF429E061BEFE57600E8BA80 /* genmeshtests.cpp */,
 			);
 			name = tests;
 			sourceTree = "<group>";
@@ -361,6 +370,8 @@
 				BF429E021BEDDDCB00E8BA80 /* mat.cpp in Sources */,
 				BF1A80241BE4FDD1001B4DCF /* material.cpp in Sources */,
 				BF1A80171BE4FDC0001B4DCF /* core.cpp in Sources */,
+				BF429E081BEFE57600E8BA80 /* genmeshtests.cpp in Sources */,
+				BF429E051BEF29B700E8BA80 /* genmesh.cpp in Sources */,
 				BF1A80251BE4FDD1001B4DCF /* mesh.cpp in Sources */,
 				BF1A80231BE4FDD1001B4DCF /* main.cpp in Sources */,
 				BF1A80261BE4FDD1001B4DCF /* runner.cpp in Sources */,
@@ -371,10 +382,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF1A80521BE6573F001B4DCF /* s7benchmarks.cpp in Sources */,
 				BF1A80451BE654FF001B4DCF /* core.cpp in Sources */,
-				BF1A80461BE654FF001B4DCF /* core.h in Sources */,
+				BF429E0A1BEFF18900E8BA80 /* genmesh.cpp in Sources */,
 				BF1A80471BE654FF001B4DCF /* s7tests.cpp in Sources */,
+				BF429E091BEFF17D00E8BA80 /* genmeshtests.cpp in Sources */,
+				BF1A80521BE6573F001B4DCF /* s7benchmarks.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
