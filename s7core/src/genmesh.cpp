@@ -20,9 +20,9 @@ namespace s7 {
         auto numFaces = (uint32_t)faces.size();
         auto numVertsInFace = (uint32_t)(*faces.begin()).size();
         
-        _verts.reserve(numVerts);
-        _edges.reserve(numFaces * numVertsInFace);
-        _faces.reserve(numFaces);
+        _verts.resize(numVerts);
+        _edges.resize(numFaces * numVertsInFace);
+        _faces.resize(numFaces);
         
         for (auto i = 0; i < numVerts; i++)
             _verts[i].v = verts[i];
@@ -30,6 +30,7 @@ namespace s7 {
         std::map<std::pair<GenVert*, GenVert*>, GenEdge*> edgeMap;
         
         // TODO Use loop 0..numVertsInFace in assignments below
+        //      (to allow arbitrary sized faces)
         for (auto faceIdx = 0; faceIdx < numFaces; faceIdx++)
         {
             auto& faceIndices = faces[faceIdx];
@@ -87,9 +88,7 @@ namespace s7 {
     {
         GenEdge* currEdge = e;
         for (auto i = 0; i < offset; i++)
-        {
-            currEdge = e->_next;
-        }
+            currEdge = currEdge->_next;
         return currEdge;
     }
 
@@ -99,8 +98,9 @@ namespace s7 {
         GenEdge* startEdge = f->_edge;
         GenEdge* currEdge = startEdge->_next;
         
-        while (currEdge != startEdge) {
-            currEdge = startEdge->_next;
+        while (currEdge != startEdge)
+        {
+            currEdge = currEdge->_next;
             numEdges++;
         }
         

@@ -37,15 +37,16 @@ namespace s7 {
     class GenMesh
     {
     public:
+        std::vector<GenVert> _verts;
+        std::vector<GenEdge> _edges;
+        std::vector<GenFace> _faces;
+
+
         GenMesh(uint32_t numVerts, uint32_t numEdges, uint32_t numFaces);
         GenMesh(
             std::vector<Vec3f> verts,
             std::vector<std::vector<uint32_t>> faces);
         
-    private:
-        std::vector<GenVert> _verts;
-        std::vector<GenEdge> _edges;
-        std::vector<GenFace> _faces;
 
         GenEdge* GetRelativeEdge(GenEdge* e, uint32_t offset) const;
         uint32_t GetNumEdgesInFace(GenFace* f) const;
