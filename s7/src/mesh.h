@@ -6,7 +6,6 @@
 #include <tinystl/vector.h>
 
 #include <bgfx/bgfx.h>
-#include <bx/readerwriter.h>
 
 namespace stl = tinystl;
 
@@ -85,7 +84,4 @@ namespace s7 {
 		bgfx::VertexDecl _decl;
 		stl::vector<Group> _groups;
 	};
-
-	MeshState* meshStateCreate();
-	void meshStateDestroy(MeshState* _meshState);
 }

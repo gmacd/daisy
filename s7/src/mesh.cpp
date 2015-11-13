@@ -10,17 +10,11 @@
 #include <tinystl/string.h>
 namespace stl = tinystl;
 
-#include <bx/readerwriter.h>
 #include <bx/string.h>
 #include <ib-compress/indexbufferdecompression.h>
 
 #include <bgfx/bgfx.h>
 
-
-// Forward declaration
-namespace bgfx {
-	int32_t read(bx::ReaderI* _reader, bgfx::VertexDecl& _decl);
-}
 
 namespace s7 {
 
@@ -140,16 +134,5 @@ namespace s7 {
 				bgfx::submit(statePass.m_viewId, statePass.m_program);
 			}
 		}
-	}
-
-	MeshState* meshStateCreate()
-	{
-		MeshState* state = (MeshState*)BX_ALLOC(entry::getAllocator(), sizeof(MeshState));
-		return state;
-	}
-
-	void meshStateDestroy(MeshState* _meshState)
-	{
-		BX_FREE(entry::getAllocator(), _meshState);
 	}
 }

@@ -1,4 +1,4 @@
-#include <catch.hpp>
+#include "catch.hpp"
 
 #include "genmesh.h"
 
@@ -49,4 +49,4 @@ TEST_CASE("Can define cube", "[genmesh]") {
         REQUIRE(mesh.GetNumEdgesInFace(&f) == 4);
     }
 }
- // TODO Test GetRelativeEdge
+

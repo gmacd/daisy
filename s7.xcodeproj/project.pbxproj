@@ -28,7 +28,6 @@
 		BF1A80581BE8021E001B4DCF /* ratio_io.hpp in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80561BE8021E001B4DCF /* ratio_io.hpp */; };
 		BF429E021BEDDDCB00E8BA80 /* mat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E001BEDDDCB00E8BA80 /* mat.cpp */; };
 		BF429E051BEF29B700E8BA80 /* genmesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E031BEF29B700E8BA80 /* genmesh.cpp */; };
-		BF429E081BEFE57600E8BA80 /* genmeshtests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E061BEFE57600E8BA80 /* genmeshtests.cpp */; };
 		BF429E091BEFF17D00E8BA80 /* genmeshtests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E061BEFE57600E8BA80 /* genmeshtests.cpp */; };
 		BF429E0A1BEFF18900E8BA80 /* genmesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E031BEF29B700E8BA80 /* genmesh.cpp */; };
 /* End PBXBuildFile section */
@@ -370,7 +369,6 @@
 				BF429E021BEDDDCB00E8BA80 /* mat.cpp in Sources */,
 				BF1A80241BE4FDD1001B4DCF /* material.cpp in Sources */,
 				BF1A80171BE4FDC0001B4DCF /* core.cpp in Sources */,
-				BF429E081BEFE57600E8BA80 /* genmeshtests.cpp in Sources */,
 				BF429E051BEF29B700E8BA80 /* genmesh.cpp in Sources */,
 				BF1A80251BE4FDD1001B4DCF /* mesh.cpp in Sources */,
 				BF1A80231BE4FDD1001B4DCF /* main.cpp in Sources */,
@@ -410,6 +408,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = osx_universal/bin;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -484,6 +484,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = osx_universal/bin;
 				GCC_DYNAMIC_NO_PIC = NO;
