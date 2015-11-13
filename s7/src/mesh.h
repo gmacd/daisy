@@ -2,12 +2,10 @@
 
 #include "core.h"
 
-#include <tinystl/allocator.h>
-#include <tinystl/vector.h>
+#include <vector>
 
 #include <bgfx/bgfx.h>
 
-namespace stl = tinystl;
 
 namespace s7 {
 
@@ -45,7 +43,7 @@ namespace s7 {
 		Sphere _sphere;
 		Aabb _aabb;
 
-		stl::vector<Primitive> _prims;
+		std::vector<Primitive> _prims;
 
 		bgfx::VertexBufferHandle _vbh;
 		bgfx::IndexBufferHandle _ibh;
@@ -82,6 +80,6 @@ namespace s7 {
 
 	private:
 		bgfx::VertexDecl _decl;
-		stl::vector<Group> _groups;
+		std::vector<Group> _groups;
 	};
 }

@@ -5,11 +5,6 @@
 
 #include "entry/entry.h"
 
-#include <tinystl/allocator.h>
-#include <tinystl/vector.h>
-#include <tinystl/string.h>
-namespace stl = tinystl;
-
 #include <bx/string.h>
 #include <ib-compress/indexbufferdecompression.h>
 
