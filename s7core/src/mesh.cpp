@@ -40,7 +40,7 @@ namespace s7 {
 	}
 	
     void Mesh::CalcBounds()
-    {
+    {   
         for (auto& group: _groups)
             group.CalcBounds();
     }
