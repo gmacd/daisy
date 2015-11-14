@@ -1,70 +1,92 @@
 #include "genmeshconverter.h"
 
+#include <algorithm>
+
 namespace s7 {
 
 	struct PackedVert
 	{
-		Vec3f _pos;
-		Vec4u8 _normal;
+		Vec3f pos;
+		Vec4u8 normal;
 	};
 
 
     Mesh Convert(const GenMesh& m)
     {
         // Declare vertex structure
-        bgfx::VertexDecl myDecl;
-		myDecl.begin();
-		myDecl.add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float, false, false);
-		myDecl.add(bgfx::Attrib::Normal, 4, bgfx::AttribType::Uint8, true, true);
-		myDecl.end();
+        bgfx::VertexDecl decl;
+		decl.begin();
+		decl.add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float, false, false);
+		decl.add(bgfx::Attrib::Normal, 4, bgfx::AttribType::Uint8, true, true);
+		decl.end();
 
-		Mesh mesh(myDecl, 1);
+		Mesh mesh(decl, 1);
 		auto& group = mesh.GetGroup(0);
 
+
 		// Allocate & assign vertices (and normals)
-		// TODO Work out normals.
-		// TODO Calc accurate points
-		// TODO Break out/refactor
-		{
-			auto numVerts = 5;
-			auto vertMem = bgfx::alloc(numVerts * myDecl.getStride());
-			auto verts = reinterpret_cast<PackedVert*>(vertMem->data);
+        auto vertMem = bgfx::alloc(m._verts.size() * decl.getStride());
+        auto verts = reinterpret_cast<PackedVert*>(vertMem->data);
+        for (auto i = 0; i < m._verts.size(); i++)
+        {
+            verts[i].pos = m._vertData[i].v;
+            verts[i].normal = Vec4u8(255, 0, 0, 255);
+        }
+        group._vbh = bgfx::createVertexBuffer(vertMem, decl);
 
-			verts[0]._pos.Set(0, 0, 1);
-			verts[0]._normal.Set(255, 0, 0, 255);
-			verts[1]._pos.Set(-1, 0, 0);
-			verts[1]._normal.Set(255, 0, 0, 255);
-			verts[2]._pos.Set(1, 0, 0);
-			verts[2]._normal.Set(255, 0, 0, 255);
-			verts[3]._pos.Set(0, -1, 0);
-			verts[3]._normal.Set(255, 0, 0, 255);
-
-			group._vbh = bgfx::createVertexBuffer(vertMem, myDecl);
-		}
 
 		// Allocate & assign indices
-		{
-			auto numIndices = 12;
-			auto idxMem = bgfx::alloc(numIndices * 2);
-			auto indices = reinterpret_cast<uint16_t*>(idxMem->data);
+        // How many faces and triangles?
+        // Work out how many indices needed.
+        // 3 edges -> 1 triangle  -> 3 verts
+        // 4 edges -> 2 triangles -> 6 verts
+        // 5 edges -> 3 triangles -> 9 verts
+        auto numIndices = 0;
+        for (auto& f: m._faces)
+        {
+            auto numTrianglesInFace = m.GetNumEdgesInFace(&f)-2;
+            numIndices += numTrianglesInFace*3;
+        }
+        auto idxMem = bgfx::alloc(numIndices * 2);
+        auto indices = reinterpret_cast<uint16_t*>(idxMem->data);
+        
+        // Now triangulate the face, assuming that it's convex.
+        auto i = 0;
+        for (auto& f: m._faces)
+        {
+            // Get the first index
+            GenEdge* startEdge = f._edge;
+            auto firstIdx = startEdge->_vert->_vertIdx;
+            
+            // Second index
+            GenEdge* currEdge = startEdge->_next;
+            auto secondIdx = currEdge->_vert->_vertIdx;
+            currEdge = currEdge->_next;
 
-			indices[0] = 0;  indices[1] = 3;  indices[2] = 1;
-			indices[3] = 0;  indices[4] = 2;  indices[5] = 3;
-			indices[6] = 0;  indices[7] = 1;  indices[8] = 2;
-			indices[9] = 1;  indices[10] = 3;  indices[11] = 2;
+            // One triangle per remaining index
+            while (currEdge != startEdge)
+            {
+                auto thirdIdx = currEdge->_vert->_vertIdx;
+            
+                indices[i++] = firstIdx;
+                indices[i++] = secondIdx;
+                indices[i++] = thirdIdx;
+                
+                secondIdx = thirdIdx;
+                currEdge = currEdge->_next;
+            }
+        }
 
-			group._ibh = bgfx::createIndexBuffer(idxMem);
-		}
+        group._ibh = bgfx::createIndexBuffer(idxMem);
+
 
 		// Create a primitive
-		{
-			group._prims.resize(1);
-			auto& prim = group._prims[0];
-			prim.m_startVertex = 0;
-			prim.m_numVertices = 4;
-			prim.m_startIndex = 0;
-			prim.m_numIndices = 12;
-		}
+        group._prims.resize(1);
+        auto& prim = group._prims[0];
+        prim.m_startVertex = 0;
+        prim.m_numVertices = m._verts.size();
+        prim.m_startIndex = 0;
+        prim.m_numIndices = 12;
 
 		// Calc bounds for prim and group
 		mesh.CalcBounds();

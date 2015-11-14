@@ -10,10 +10,15 @@ namespace s7 {
     // TODO Hide support structs
     struct GenEdge;
     struct GenFace;
+    
+    struct GenVertData
+    {
+        Vec3f v;
+    };
 
     struct GenVert
     {
-        Vec3f v;
+        int _vertIdx;
         GenEdge* _edge;
     };
 
@@ -37,6 +42,7 @@ namespace s7 {
     class GenMesh
     {
     public:
+        std::vector<GenVertData> _vertData;
         std::vector<GenVert> _verts;
         std::vector<GenEdge> _edges;
         std::vector<GenFace> _faces;
@@ -49,7 +55,8 @@ namespace s7 {
         
 
         GenEdge* GetRelativeEdge(GenEdge* e, uint32_t offset) const;
-        uint32_t GetNumEdgesInFace(GenFace* f) const;
+        uint32_t GetNumEdgesInFace(const GenFace* f) const;
+        const GenVertData* GetVertData(const GenEdge* e) const;
     };
 
 }

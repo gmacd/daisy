@@ -20,12 +20,16 @@ namespace s7 {
         auto numFaces = (uint32_t)faces.size();
         auto numVertsInFace = (uint32_t)(*faces.begin()).size();
         
+        _vertData.resize(numVerts);
         _verts.resize(numVerts);
         _edges.resize(numFaces * numVertsInFace);
         _faces.resize(numFaces);
         
         for (auto i = 0; i < numVerts; i++)
-            _verts[i].v = verts[i];
+        {
+            _vertData[i].v = verts[i];
+            _verts[i]._vertIdx = i;
+        }
         
         std::map<std::pair<GenVert*, GenVert*>, GenEdge*> edgeMap;
         
@@ -92,7 +96,7 @@ namespace s7 {
         return currEdge;
     }
 
-    uint32_t GenMesh::GetNumEdgesInFace(GenFace* f) const
+    uint32_t GenMesh::GetNumEdgesInFace(const GenFace* f) const
     {
         uint32_t numEdges = 1;
         GenEdge* startEdge = f->_edge;
@@ -105,5 +109,10 @@ namespace s7 {
         }
         
         return numEdges;
+    }
+
+    const GenVertData* GenMesh::GetVertData(const GenEdge* e) const
+    {
+        return &_vertData[e->_vert->_vertIdx];
     }
 }
