@@ -62,7 +62,7 @@ namespace s7 {
             auto secondIdx = currEdge->_vert->_vertIdx;
             currEdge = currEdge->_next;
             
-            auto faceNormal = m.Normal(&f);
+            auto faceNormal = m.GetFaceNormal(&f);
 
             // One triangle per remaining index
             while (currEdge != startEdge)

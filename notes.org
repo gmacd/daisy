@@ -1,3 +1,10 @@
+* Priorities
+** Flat shader
+** Lighting
+** Materials
+
+------------
+
 * Engine
 ** Mesh Editing
 *** Extrude
@@ -11,6 +18,9 @@
 ** Collision
 *** Simple sphere based collision
 *** Draw collision volumes
+** Input
+*** Keyboard
+*** Mouse
 
 * Game
 ** Shrunken solar system
@@ -19,4 +29,4 @@
 ** Ship
 *** Simple flight model
 *** Camera lag
-** Coll
+

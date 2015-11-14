@@ -129,6 +129,8 @@ namespace s7 {
     extern float AlmostEquals(float a, float b);
 	extern float Sqrt(float f);
 	extern float Distance(const Vec3f& v1, const Vec3f& v2);
+    
+    extern Vec3f Normal(const Vec3f a, const Vec3f b, const Vec3f c);
 
 	extern Aabb CreateAabbFromPoints(const Vec3f* pts, size_t numPts);
 	extern Sphere CreateSphereFromAabb(const Aabb& box);

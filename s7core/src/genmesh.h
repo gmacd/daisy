@@ -58,7 +58,7 @@ namespace s7 {
         uint32_t GetNumEdgesInFace(const GenFace* f) const;
         const GenVertData* GetVertData(const GenEdge* e) const;
         
-        Vec3f Normal(const GenFace* f) const;
+        Vec3f GetFaceNormal(const GenFace* f) const;
     };
 
 }

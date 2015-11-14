@@ -116,11 +116,11 @@ namespace s7 {
         return &_vertData[e->_vert->_vertIdx];
     }
 
-    Vec3f GenMesh::Normal(const GenFace* f) const
+    Vec3f GenMesh::GetFaceNormal(const GenFace* f) const
     {
         auto a = _vertData[f->_edge->_vert->_vertIdx].v;
         auto b = _vertData[f->_edge->_next->_vert->_vertIdx].v;
         auto c = _vertData[f->_edge->_next->_next->_vert->_vertIdx].v;
-        return (b-a).Cross(c-a).Normal();
+        return Normal(a, b, c);
     }
 }

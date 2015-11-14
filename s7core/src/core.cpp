@@ -107,6 +107,12 @@ namespace s7 {
 		auto a = v2 - v1;
 		return Sqrt(a.x*a.x + a.y*a.y + a.z*a.z);
 	}
+    
+    Vec3f Normal(const Vec3f a, const Vec3f b, const Vec3f c)
+    {
+        return (b-a).Cross(c-a).Normal();
+    }
+
 
 	Aabb CreateAabbFromPoints(const Vec3f* pts, size_t numPts)
 	{
