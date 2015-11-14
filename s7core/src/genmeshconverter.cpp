@@ -30,7 +30,6 @@ namespace s7 {
         for (auto i = 0; i < m._verts.size(); i++)
         {
             verts[i].pos = m._vertData[i].v;
-            verts[i].normal = Vec4u8(255, 0, 0, 255);
         }
         group._vbh = bgfx::createVertexBuffer(vertMem, decl);
 
@@ -62,16 +61,25 @@ namespace s7 {
             GenEdge* currEdge = startEdge->_next;
             auto secondIdx = currEdge->_vert->_vertIdx;
             currEdge = currEdge->_next;
+            
+            auto faceNormal = m.Normal(&f);
 
             // One triangle per remaining index
             while (currEdge != startEdge)
             {
                 auto thirdIdx = currEdge->_vert->_vertIdx;
             
-                indices[i++] = firstIdx;
-                indices[i++] = secondIdx;
-                indices[i++] = thirdIdx;
+                // Vertex-position
+                indices[i  ] = firstIdx;
+                indices[i+1] = secondIdx;
+                indices[i+2] = thirdIdx;
                 
+                // Vertex-normal
+                verts[firstIdx].normal = faceNormal;
+                verts[secondIdx].normal = faceNormal;
+                verts[thirdIdx].normal = faceNormal;
+                
+                i+=3;
                 secondIdx = thirdIdx;
                 currEdge = currEdge->_next;
             }
@@ -86,7 +94,7 @@ namespace s7 {
         prim.m_startVertex = 0;
         prim.m_numVertices = m._verts.size();
         prim.m_startIndex = 0;
-        prim.m_numIndices = 12;
+        prim.m_numIndices = numIndices;
 
 		// Calc bounds for prim and group
 		mesh.CalcBounds();

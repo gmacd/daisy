@@ -60,6 +60,17 @@ namespace s7 {
     const Vec3f Vec3f::XAxis(1, 0, 0);
     const Vec3f Vec3f::YAxis(0, 1, 0);
     const Vec3f Vec3f::ZAxis(0, 0, 1);
+    
+
+    Vec4u8& Vec4u8::operator=(const Vec3f& v)
+    {
+        x = (uint8_t)(255.0f/v.x);
+        y = (uint8_t)(255.0f/v.y);
+        z = (uint8_t)(255.0f/v.z);
+        w = 1.0f;
+        return *this;
+    }
+
 
     // Direction is not normalized
     Ray Ray::RayFromPoints(const Vec3f& origin, const Vec3f& other)

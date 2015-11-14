@@ -52,6 +52,8 @@ namespace s7 {
 		Vec4u8(uint8_t xx, uint8_t yy, uint8_t zz, uint8_t ww) : x(xx), y(yy), z(zz), w(ww) {}
 
 		void Set(uint8_t xx, uint8_t yy, uint8_t zz, uint8_t ww) { x = xx, y = yy, z = zz, w = ww; }
+        
+        Vec4u8& operator=(const Vec3f& v);
 
 		Vec4u8 operator+(const Vec4u8& v) const { return Vec4u8(x + v.x, y + v.y, z + v.z, w + v.w); }
 		Vec4u8 operator-(const Vec4u8& v) const { return Vec4u8(x - v.x, y - v.y, z - v.z, w - v.w); }

@@ -1,2 +1,22 @@
-* Mesh
-** TODO Mesh normals
+* Engine
+** Mesh Editing
+*** Extrude
+*** Split
+*** Jiggle verts
+*** Assign materials
+** Rendering
+*** Flat shader
+*** Simple lighting
+*** Simple materials
+** Collision
+*** Simple sphere based collision
+*** Draw collision volumes
+
+* Game
+** Shrunken solar system
+*** Sun
+*** Planets
+** Ship
+*** Simple flight model
+*** Camera lag
+** Coll
