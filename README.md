@@ -1,5 +1,5 @@
 # daisy
-Daisy was intended to be more than it is!
+Daisy was intended to be more than it is, but I'm releasing it before I move on and forget about it....
 
 As it stands, it's an example of an implementation of the Half Edge data structure, which is a nicer way of editing mesh data.
 
