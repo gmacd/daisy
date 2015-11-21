@@ -73,24 +73,24 @@ namespace s7 {
         
         Ray(const Vec3f& origin, const Vec3f& dir): _origin(origin), _dir(dir) {}
         
-        static Ray RayFromPoints(const Vec3f& origin, const Vec3f& other);
+        static Ray RayFromPoints(const Vec3f& p1, const Vec3f& p2);
     };
     
     
     // Infinite line
     struct Line
     {
-        Vec3f _a, _b;
+        Vec3f a, b;
         
-        Line(const Vec3f& a, const Vec3f& b): _a(a), _b(b) {}
+        Line(const Vec3f& aa, const Vec3f& bb): a(aa), b(bb) {}
     };
 
     
     struct LineSegment
     {
-        Vec3f _a, _b;
+        Vec3f a, b;
         
-        LineSegment(const Vec3f& a, const Vec3f& b): _a(a), _b(b) {}
+        LineSegment(const Vec3f& aa, const Vec3f& bb): a(aa), b(bb) {}
         
         float Len() const;
         Vec3f MidPoint() const;
@@ -99,24 +99,24 @@ namespace s7 {
     
 	struct Aabb
 	{
-		Vec3f _min;
-		Vec3f _max;
+		Vec3f min;
+		Vec3f max;
 
-		Aabb(): _min(), _max() {}
-		Aabb(const Vec3f& min, const Vec3f& max) : _min(min), _max(max) {}
+		Aabb(): min(), max() {}
+		Aabb(const Vec3f& mmin, const Vec3f& mmax) : min(mmin), max(mmax) {}
 	};
 
 
 	struct Sphere
 	{
-		Vec3f _centre;
-		float _radius;
+		Vec3f centre;
+		float radius;
 
-		Sphere() : _centre(), _radius(0.0f) {}
-		Sphere(const Vec3f& c, float r) : _centre(c), _radius(r) {}
-        Sphere(float x, float y, float z, float r) : _centre(x, y, z), _radius(r) {}
+		Sphere() : centre(), radius(0.0f) {}
+		Sphere(const Vec3f& c, float r) : centre(c), radius(r) {}
+        Sphere(float x, float y, float z, float r) : centre(x, y, z), radius(r) {}
 
-        void Set(const Vec3f& c, float r) { _centre = c, _radius = r; }
+        void Set(const Vec3f& c, float r) { centre = c, radius = r; }
     };
     
     static const float Pi     = 3.14159265358979323846f;

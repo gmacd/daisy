@@ -73,21 +73,19 @@ namespace s7 {
 
 
     // Direction is not normalized
-    Ray Ray::RayFromPoints(const Vec3f& origin, const Vec3f& other)
+    Ray Ray::RayFromPoints(const Vec3f& p1, const Vec3f& p2)
     {
-        return Ray(
-            origin,
-            other-origin);
+        return Ray(p1, p2-p1);
     }
 
     float LineSegment::Len() const
     {
-        return (_a-_b).Len();
+        return (a-b).Len();
     }
 
     Vec3f LineSegment::MidPoint() const
     {
-        return _a.MidPoint(_b);
+        return a.MidPoint(b);
     }
 
     
@@ -122,14 +120,14 @@ namespace s7 {
 		{
 			auto& pt = pts[i];
 
-			if      (pt.x < box._min.x) box._min.x = pt.x;
-			else if (pt.x > box._max.x) box._max.x = pt.x;
+			if      (pt.x < box.min.x) box.min.x = pt.x;
+			else if (pt.x > box.max.x) box.max.x = pt.x;
 
-			if      (pt.y < box._min.y) box._min.y = pt.y;
-			else if (pt.y > box._max.y) box._max.y = pt.y;
+			if      (pt.y < box.min.y) box.min.y = pt.y;
+			else if (pt.y > box.max.y) box.max.y = pt.y;
 
-			if      (pt.z < box._min.z) box._min.z = pt.z;
-			else if (pt.z > box._max.z) box._max.z = pt.z;
+			if      (pt.z < box.min.z) box.min.z = pt.z;
+			else if (pt.z > box.max.z) box.max.z = pt.z;
 		}
 
 		return box;
@@ -137,35 +135,35 @@ namespace s7 {
 
 	Sphere CreateSphereFromAabb(const Aabb& box)
 	{
-		auto centre = box._min + ((box._max - box._min) / 2.0f);
-		auto radius = Distance(centre, box._max);
+		auto centre = box.min + ((box.max - box.min) / 2.0f);
+		auto radius = Distance(centre, box.max);
 		Sphere s(centre, radius);
 		return s;
 	}
 
     Sphere CreateSphereFromSpheres(const Sphere* spheres, size_t numSpheres)
     {
-        Sphere maxSphere(spheres[0]._centre, spheres[0]._radius);
+        Sphere maxSphere(spheres[0].centre, spheres[0].radius);
         
         for (auto i = 1; i < numSpheres; i++)
         {
             auto& s = spheres[i];
             
             // If sphere has same midpoint, check radius
-            if (s._centre == maxSphere._centre)
+            if (s.centre == maxSphere.centre)
             {
-                maxSphere._radius = std::max(maxSphere._radius, s._radius);
+                maxSphere.radius = std::max(maxSphere.radius, s.radius);
                 continue;
             }
             
-            Line line(maxSphere._centre, s._centre);
+            Line line(maxSphere.centre, s.centre);
             
             Vec3f pts[4];// s1p1, s1p2, s2p1, s2p2;
             Intersect(maxSphere, line, pts[0], pts[1]);
             Intersect(s, line, pts[2], pts[3]);
             
             // Now find 2 furthest points on the line
-            LineSegment longestLine(line._a, line._b);
+            LineSegment longestLine(line.a, line.b);
             float longestLineLen = longestLine.Len();
             for (auto pa = 0; pa < 3; pa++)
             {
@@ -192,22 +190,22 @@ namespace s7 {
     bool Intersect(const Sphere& s, const Line& l, Vec3f& i1, Vec3f& i2)
     {
         // http://paulbourke.net/geometry/circlesphere/index.html#linesphere
-        float a = (l._b.x - l._a.x) * (l._b.x - l._a.x)
-                + (l._b.y - l._a.y) * (l._b.y - l._a.y)
-                + (l._b.z - l._a.z) * (l._b.z - l._a.z);
-        float b = 2.0f * (((l._b.x - l._a.x) * (l._a.x - s._centre.x))
-                        + ((l._b.y - l._a.y) * (l._a.y - s._centre.y))
-                        + ((l._b.z - l._a.z) * (l._a.z - s._centre.z)));
-        float c = s._centre.x * s._centre.x
-                + s._centre.y * s._centre.y
-                + s._centre.z * s._centre.z
-                + l._a.x * l._a.x
-                + l._a.y * l._a.y
-                + l._a.z * l._a.z
-                - 2.0f * (s._centre.x * l._a.x
-                          + s._centre.y * l._a.y
-                          + s._centre.z * l._a.z)
-                - s._radius * s._radius;
+        float a = (l.b.x - l.a.x) * (l.b.x - l.a.x)
+                + (l.b.y - l.a.y) * (l.b.y - l.a.y)
+                + (l.b.z - l.a.z) * (l.b.z - l.a.z);
+        float b = 2.0f * (((l.b.x - l.a.x) * (l.a.x - s.centre.x))
+                        + ((l.b.y - l.a.y) * (l.a.y - s.centre.y))
+                        + ((l.b.z - l.a.z) * (l.a.z - s.centre.z)));
+        float c = s.centre.x * s.centre.x
+                + s.centre.y * s.centre.y
+                + s.centre.z * s.centre.z
+                + l.a.x * l.a.x
+                + l.a.y * l.a.y
+                + l.a.z * l.a.z
+                - 2.0f * (s.centre.x * l.a.x
+                          + s.centre.y * l.a.y
+                          + s.centre.z * l.a.z)
+                - s.radius * s.radius;
         
         float discriminant = b*b - 4.0f*a*c;
         if (discriminant < 0.0f)
@@ -219,7 +217,7 @@ namespace s7 {
         {
             // Tangential intersection - one point
             float u = -b/(2.0f*a);
-            i1 = l._a + (u * (l._b - l._a));
+            i1 = l.a + (u * (l.b - l.a));
             return true;
         }
         else
@@ -228,8 +226,8 @@ namespace s7 {
             float sqrtDisc = Sqrt(discriminant);
             float u1 = (-b + sqrtDisc) / (2.0f * a);
             float u2 = (-b - sqrtDisc) / (2.0f * a);
-            i1 = l._a + (u1 * (l._b - l._a));
-            i2 = l._a + (u2 * (l._b - l._a));
+            i1 = l.a + (u1 * (l.b - l.a));
+            i2 = l.a + (u2 * (l.b - l.a));
             return true;
         }
     }
