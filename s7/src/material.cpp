@@ -22,7 +22,7 @@ namespace s7 {
 		return NULL;
 	}
 
-	static void* loadMem(bx::FileReaderI* _reader, bx::ReallocatorI* _allocator, const char* _filePath, uint32_t* _size)
+	static void* loadMem(bx::FileReaderI* _reader, bx::AllocatorI* _allocator, const char* _filePath, uint32_t* _size)
 	{
 		if (0 == bx::open(_reader, _filePath))
 		{
@@ -128,7 +128,7 @@ namespace s7 {
 		}
 
 		bgfx::TextureHandle handle = BGFX_INVALID_HANDLE;
-		bx::ReallocatorI* allocator = entry::getAllocator();
+		bx::AllocatorI* allocator = entry::getAllocator();
 
 		uint32_t size = 0;
 		void* data = loadMem(_reader, allocator, filePath, &size);

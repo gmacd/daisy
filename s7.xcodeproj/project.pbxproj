@@ -91,10 +91,10 @@
 		BF1A80201BE4FDD1001B4DCF /* varying.def.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = varying.def.sc; path = s7/src/varying.def.sc; sourceTree = "<group>"; };
 		BF1A80211BE4FDD1001B4DCF /* vs_mesh.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vs_mesh.sc; path = s7/src/vs_mesh.sc; sourceTree = "<group>"; };
 		BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s7tests.cpp; path = s7tests/src/s7tests.cpp; sourceTree = "<group>"; };
-		BF1A80301BE5F390001B4DCF /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; name = font; path = ../bgfx/examples/runtime/font; sourceTree = "<group>"; };
-		BF1A80311BE5F390001B4DCF /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = textures; path = ../bgfx/examples/runtime/textures; sourceTree = "<group>"; };
-		BF1A80341BE5F510001B4DCF /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shaders; path = ../bgfx/examples/runtime/shaders; sourceTree = "<group>"; };
-		BF1A80361BE5F554001B4DCF /* meshes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = meshes; path = ../bgfx/examples/runtime/meshes; sourceTree = "<group>"; };
+		BF1A80301BE5F390001B4DCF /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; name = font; path = bgfx/examples/runtime/font; sourceTree = "<group>"; };
+		BF1A80311BE5F390001B4DCF /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = textures; path = bgfx/examples/runtime/textures; sourceTree = "<group>"; };
+		BF1A80341BE5F510001B4DCF /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shaders; path = bgfx/examples/runtime/shaders; sourceTree = "<group>"; };
+		BF1A80361BE5F554001B4DCF /* meshes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = meshes; path = bgfx/examples/runtime/meshes; sourceTree = "<group>"; };
 		BF1A803E1BE6548C001B4DCF /* s7test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = s7test; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s7benchmarks.cpp; path = s7tests/src/s7benchmarks.cpp; sourceTree = "<group>"; };
 		BF1A80541BE8021E001B4DCF /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = third/include/catch.hpp; sourceTree = "<group>"; };
@@ -109,8 +109,8 @@
 		BF429E0C1BF5BEB200E8BA80 /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mesh.h; path = s7core/src/mesh.h; sourceTree = "<group>"; };
 		BF429E101BF6862900E8BA80 /* genmeshconverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = genmeshconverter.cpp; path = s7core/src/genmeshconverter.cpp; sourceTree = "<group>"; };
 		BF429E111BF6862900E8BA80 /* genmeshconverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = genmeshconverter.h; path = s7core/src/genmeshconverter.h; sourceTree = "<group>"; };
-		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "../bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
-		BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "example-common.xcodeproj"; path = "../bgfx/.build/projects/xcode4-osx/example-common.xcodeproj"; sourceTree = "<group>"; };
+		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
+		BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "example-common.xcodeproj"; path = "bgfx/.build/projects/xcode4-osx/example-common.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -438,6 +438,13 @@
 					__STDC_FORMAT_MACROS,
 					__STDC_CONSTANT_MACROS,
 				);
+				HEADER_SEARCH_PATHS = (
+					bx/include/compat/osx,
+					bx/include,
+					bgfx/include,
+					bgfx/3rdparty,
+					bgfx/examples/common,
+				);
 				INSTALL_PATH = "$(HOME)/Applications";
 				OBJROOT = osx_universal/bin/Universal/Release/s7;
 				PRODUCT_NAME = s7;
@@ -467,11 +474,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					../bx/include/compat/osx,
-					../bx/include,
-					../bgfx/include,
-					../bgfx/3rdparty,
-					../bgfx/examples/common,
+					bx/include/compat/osx,
+					bx/include,
+					bgfx/include,
+					bgfx/3rdparty,
+					bgfx/examples/common,
 				);
 				OBJROOT = osx_universal/bin/Universal/Debug/s7;
 				ONLY_ACTIVE_ARCH = YES;
@@ -514,6 +521,13 @@
 					__STDC_FORMAT_MACROS,
 					__STDC_CONSTANT_MACROS,
 				);
+				HEADER_SEARCH_PATHS = (
+					bx/include/compat/osx,
+					bx/include,
+					bgfx/include,
+					bgfx/3rdparty,
+					bgfx/examples/common,
+				);
 				INSTALL_PATH = "$(HOME)/Applications";
 				OBJROOT = osx_universal/bin/Universal/Debug/s7;
 				PRODUCT_NAME = s7;
@@ -542,11 +556,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					../bx/include/compat/osx,
-					../bx/include,
-					../bgfx/include,
-					../bgfx/3rdparty,
-					../bgfx/examples/common,
+					bx/include/compat/osx,
+					bx/include,
+					bgfx/include,
+					bgfx/3rdparty,
+					bgfx/examples/common,
 				);
 				OBJROOT = osx_universal/bin/Universal/Release/s7;
 				ONLY_ACTIVE_ARCH = NO;
@@ -606,11 +620,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				HEADER_SEARCH_PATHS = (
-					../bx/include/compat/osx,
-					../bx/include,
-					../bgfx/include,
-					../bgfx/3rdparty,
-					../bgfx/examples/common,
+					bx/include/compat/osx,
+					bx/include,
+					bgfx/include,
+					bgfx/3rdparty,
+					bgfx/examples/common,
 					third/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -658,11 +672,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				HEADER_SEARCH_PATHS = (
-					../bx/include/compat/osx,
-					../bx/include,
-					../bgfx/include,
-					../bgfx/3rdparty,
-					../bgfx/examples/common,
+					bx/include/compat/osx,
+					bx/include,
+					bgfx/include,
+					bgfx/3rdparty,
+					bgfx/examples/common,
 					third/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;

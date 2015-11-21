@@ -47,7 +47,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      customWorkingDirectory = "/Users/graham/Documents/Code/daisy/bgfx/examples/runtime"
+      customWorkingDirectory = "/Users/graham/Documents/Code/daisy/daisy/bgfx/examples/runtime"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
