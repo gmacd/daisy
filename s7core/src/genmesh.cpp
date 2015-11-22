@@ -18,11 +18,14 @@ namespace s7 {
     {
         auto numVerts = (uint32_t)verts.size();
         auto numFaces = (uint32_t)faces.size();
-        auto numVertsInFace = (uint32_t)(*faces.begin()).size();
+        
+        auto totalNumEdges = 0;
+        for (auto f: faces)
+            totalNumEdges += f.size();
         
         _vertData.resize(numVerts);
         _verts.resize(numVerts);
-        _edges.resize(numFaces * numVertsInFace);
+        _edges.resize(totalNumEdges);
         _faces.resize(numFaces);
         
         for (auto i = 0; i < numVerts; i++)
@@ -33,50 +36,58 @@ namespace s7 {
         
         std::map<std::pair<GenVert*, GenVert*>, GenEdge*> edgeMap;
         
-        // TODO Use loop 0..numVertsInFace in assignments below
-        //      (to allow arbitrary sized faces)
+        auto eIdx = 0;
         for (auto faceIdx = 0; faceIdx < numFaces; faceIdx++)
         {
             auto& faceIndices = faces[faceIdx];
-            auto eIdx = faceIdx * numVertsInFace;
+            auto numVertsInFace = faces[faceIdx].size();
             
             // Vert._edgeIdx points to one of the half edges
-            _verts[faceIndices[0]]._edge = &_edges[eIdx];
-            _verts[faceIndices[1]]._edge = &_edges[eIdx];
-            _verts[faceIndices[2]]._edge = &_edges[eIdx];
-            _verts[faceIndices[3]]._edge = &_edges[eIdx];
+            for (auto i = 0; i < numVertsInFace; i++)
+            {
+                _verts[faceIndices[i]]._edge = &_edges[eIdx];
+            }
             
             // Edge._vertIdx points to vertex at end of half-edge
-            _edges[eIdx  ]._vert = &_verts[faceIndices[1]];
-            _edges[eIdx+1]._vert = &_verts[faceIndices[2]];
-            _edges[eIdx+2]._vert = &_verts[faceIndices[3]];
-            _edges[eIdx+3]._vert = &_verts[faceIndices[0]];
+            for (auto i = 0, j = 1; i < numVertsInFace; i++, j++)
+            {
+                if (j == numVertsInFace)
+                    j = 0;
+                _edges[eIdx+i]._vert = &_verts[faceIndices[j]];
+            }
             
-            edgeMap[std::make_pair(_edges[eIdx+3]._vert, _edges[eIdx  ]._vert)] = &_edges[eIdx];
-            edgeMap[std::make_pair(_edges[eIdx  ]._vert, _edges[eIdx+1]._vert)] = &_edges[eIdx+1];
-            edgeMap[std::make_pair(_edges[eIdx+1]._vert, _edges[eIdx+2]._vert)] = &_edges[eIdx+2];
-            edgeMap[std::make_pair(_edges[eIdx+2]._vert, _edges[eIdx+3]._vert)] = &_edges[eIdx+3];
+            for (auto i = 0, j = 1; i < numVertsInFace; i++, j++)
+            {
+                if (j == numVertsInFace)
+                    j = 0;
+                edgeMap[std::make_pair(_edges[eIdx+i]._vert, _edges[eIdx+j]._vert)] = &_edges[eIdx+j];
+            }
             
             // Edge._nextIdx points to the next edge round the face
-            _edges[eIdx  ]._next = &_edges[eIdx+1];
-            _edges[eIdx+1]._next = &_edges[eIdx+2];
-            _edges[eIdx+2]._next = &_edges[eIdx+3];
-            _edges[eIdx+3]._next = &_edges[eIdx];
+            for (auto i = 0, j = 1; i < numVertsInFace; i++, j++)
+            {
+                if (j == numVertsInFace)
+                    j = 0;
+                _edges[eIdx+i]._next = &_edges[eIdx+j];
+            }
             
             // Edge._nextIdx points to the previous edge round the face
-            _edges[eIdx  ]._prev = &_edges[eIdx+3];
-            _edges[eIdx+1]._prev = &_edges[eIdx];
-            _edges[eIdx+2]._prev = &_edges[eIdx+1];
-            _edges[eIdx+3]._prev = &_edges[eIdx+2];
+            for (auto i = 0, j = 1; i < numVertsInFace; i++, j++)
+            {
+                if (j == numVertsInFace)
+                    j = 0;
+                _edges[eIdx+j]._prev = &_edges[eIdx+i];
+            }
             
             // Edge._faceIdx all point to the same face
-            _edges[eIdx  ]._face = &_faces[faceIdx];
-            _edges[eIdx+1]._face = &_faces[faceIdx];
-            _edges[eIdx+2]._face = &_faces[faceIdx];
-            _edges[eIdx+3]._face = &_faces[faceIdx];
+            for (auto i = 0; i < numVertsInFace; i++)
+                _edges[eIdx+i]._face = &_faces[faceIdx];
             
             // Face._edgeIdx points to the first half-edge
             _faces[faceIdx]._edge = &_edges[eIdx];
+
+            // Point to the first edge index for the next face
+            eIdx += faces[faceIdx].size();
         }
         
         for (auto& edge: _edges)

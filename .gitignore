@@ -3,6 +3,7 @@
 *.vcxproj.user
 *.sdf
 *.xcuserstate
+*.xcbkptlist
 
 bin/
 obj/

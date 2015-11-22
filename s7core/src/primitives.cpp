@@ -29,4 +29,27 @@ namespace s7 {
         });
     }
 
+    GenMesh* CreateOctahedronMesh()
+    {
+        return new GenMesh(
+        {
+            Vec3f( 0,  1,  0), // top
+            Vec3f( 0,  0,  1),
+            Vec3f( 1,  0,  0),
+            Vec3f(-1,  0,  0),
+            Vec3f( 0,  0, -1),
+            Vec3f( 0, -1,  0), // bottom
+        },
+        {
+            {0, 1, 2},
+            {0, 2, 4},
+            {0, 4, 3},
+            {0, 3, 1},
+            {5, 2, 1},
+            {5, 4, 2},
+            {5, 3, 4},
+            {5, 1, 3},
+        });
+    }
+
 };
