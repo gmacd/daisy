@@ -134,4 +134,53 @@ namespace s7 {
         auto c = _vertData[f->_edge->_next->_next->_vert->_vertIdx].v;
         return Normal(a, b, c);
     }
+    
+    GenVert* GenMesh::SplitEdge(GenEdge* existingEdge)
+    {
+        auto& v1 = _vertData[existingEdge->_prev->_vert->_vertIdx].v;
+        auto& v2 = _vertData[existingEdge->_vert->_vertIdx].v;
+        auto v = v1.MidPoint(v2);
+        
+        // Existing edges and vert
+        //auto existingVert = existingEdge->_vert;
+        auto existingOppEdge = existingEdge->_opposite;
+        
+        // New vert
+        int newVertIdx = _vertData.size();
+        _vertData.push_back(GenVertData {v});
+        _verts.push_back(GenVert{newVertIdx, existingEdge});
+        auto newVert = &_verts.back();
+        
+        // New edges - to be inserted before existing edge
+        _edges.push_back(GenEdge {
+            newVert,
+            nullptr,
+            existingEdge->_prev,
+            existingEdge,
+            existingEdge->_face});
+        auto newEdge = &_edges.back();
+        
+        _edges.push_back(GenEdge {
+            existingOppEdge->_vert,
+            nullptr,
+            existingOppEdge,
+            existingOppEdge->_next,
+            existingOppEdge->_face});
+        auto newOppEdge = &_edges.back();
+        
+        newEdge->_opposite = newOppEdge->_opposite;
+        newOppEdge->_opposite = newEdge->_opposite;
+        
+        // Link the pre-existing edges
+        existingEdge->_prev = newEdge;
+        existingOppEdge->_next = newOppEdge;
+        newEdge->_prev->_next = newEdge;
+        newOppEdge->_next->_prev = newOppEdge;
+        
+        // Fix up vert if it refers to one of the existing edges
+        if (existingOppEdge->_vert->_edge == existingOppEdge)
+            existingOppEdge->_vert->_edge = newOppEdge;
+        
+        return newVert;
+    }
 }

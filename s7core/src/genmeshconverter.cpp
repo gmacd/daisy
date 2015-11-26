@@ -2,6 +2,11 @@
 
 #include <algorithm>
 
+#include <bgfx/bgfx.h>
+
+
+// TODO Switch to ear clipping for triangulation
+
 namespace s7 {
 
 	struct PackedVert

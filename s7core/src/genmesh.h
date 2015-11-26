@@ -8,6 +8,7 @@ namespace s7 {
 
     // TODO Separate vert details from GenVert?
     // TODO Hide support structs
+    // TODO Initial size?  size*1.5?
     struct GenEdge;
     struct GenFace;
     
@@ -42,6 +43,7 @@ namespace s7 {
     class GenMesh
     {
     public:
+        // TODO Make these 4 private
         std::vector<GenVertData> _vertData;
         std::vector<GenVert> _verts;
         std::vector<GenEdge> _edges;
@@ -59,6 +61,10 @@ namespace s7 {
         const GenVertData* GetVertData(const GenEdge* e) const;
         
         Vec3f GetFaceNormal(const GenFace* f) const;
+
+        // Split an edge in two, returning the new vert.
+        // Results in one new vert and two new edges.
+        GenVert* SplitEdge(GenEdge* existingEdge);
     };
 
 }

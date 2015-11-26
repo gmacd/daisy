@@ -35,6 +35,8 @@
 		BF429E0E1BF5BEFA00E8BA80 /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E0B1BF5BEB200E8BA80 /* mesh.cpp */; };
 		BF429E121BF6862900E8BA80 /* genmeshconverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E101BF6862900E8BA80 /* genmeshconverter.cpp */; };
 		BF429E131BF6862900E8BA80 /* genmeshconverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E101BF6862900E8BA80 /* genmeshconverter.cpp */; };
+		BF6AD4971C06E292004714B6 /* libbgfxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FED1BE4EBBF00C21B7D /* libbgfxDebug.a */; };
+		BF6AD4981C06E292004714B6 /* libexample-commonDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FF31BE4EBC500C21B7D /* libexample-commonDebug.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,20 @@
 			remoteInfo = bgfx;
 		};
 		BF1A80101BE4F056001B4DCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D3F00585AEB50776ADD035C;
+			remoteInfo = "example-common";
+		};
+		BF6AD4931C06E27F004714B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 14844BFB5F862D2A747644C7;
+			remoteInfo = bgfx;
+		};
+		BF6AD4951C06E27F004714B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */;
 			proxyType = 1;
@@ -131,6 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6AD4971C06E292004714B6 /* libbgfxDebug.a in Frameworks */,
+				BF6AD4981C06E292004714B6 /* libexample-commonDebug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +318,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				BF6AD4941C06E27F004714B6 /* PBXTargetDependency */,
+				BF6AD4961C06E27F004714B6 /* PBXTargetDependency */,
 			);
 			name = s7test;
 			productName = s7test;
@@ -426,6 +446,16 @@
 			isa = PBXTargetDependency;
 			name = "example-common";
 			targetProxy = BF1A80101BE4F056001B4DCF /* PBXContainerItemProxy */;
+		};
+		BF6AD4941C06E27F004714B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = bgfx;
+			targetProxy = BF6AD4931C06E27F004714B6 /* PBXContainerItemProxy */;
+		};
+		BF6AD4961C06E27F004714B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "example-common";
+			targetProxy = BF6AD4951C06E27F004714B6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
