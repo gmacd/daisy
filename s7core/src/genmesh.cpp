@@ -23,6 +23,11 @@ namespace s7 {
         for (auto f: faces)
             totalNumEdges += f.size();
         
+        _vertData.reserve(numVerts*2);
+        _verts.reserve(numVerts*2);
+        _edges.reserve(totalNumEdges*2);
+        _faces.reserve(numFaces*2);
+
         _vertData.resize(numVerts);
         _verts.resize(numVerts);
         _edges.resize(totalNumEdges);
@@ -142,11 +147,10 @@ namespace s7 {
         auto v = v1.MidPoint(v2);
         
         // Existing edges and vert
-        //auto existingVert = existingEdge->_vert;
         auto existingOppEdge = existingEdge->_opposite;
         
         // New vert
-        int newVertIdx = _vertData.size();
+        int newVertIdx = (int)_vertData.size();
         _vertData.push_back(GenVertData {v});
         _verts.push_back(GenVert{newVertIdx, existingEdge});
         auto newVert = &_verts.back();
@@ -168,8 +172,8 @@ namespace s7 {
             existingOppEdge->_face});
         auto newOppEdge = &_edges.back();
         
-        newEdge->_opposite = newOppEdge->_opposite;
-        newOppEdge->_opposite = newEdge->_opposite;
+        newEdge->_opposite = newOppEdge;
+        newOppEdge->_opposite = newEdge;
         
         // Link the pre-existing edges
         existingEdge->_prev = newEdge;

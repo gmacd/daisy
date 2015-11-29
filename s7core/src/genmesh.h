@@ -6,9 +6,9 @@
 
 namespace s7 {
 
-    // TODO Separate vert details from GenVert?
+    // TODO Keep GenVertData and GenVert separate or merge?
     // TODO Hide support structs
-    // TODO Initial size?  size*1.5?
+    // TODO Custom container that doesn't invalidate existing pointers
     struct GenEdge;
     struct GenFace;
     
@@ -16,6 +16,7 @@ namespace s7 {
     {
         Vec3f v;
     };
+
 
     struct GenVert
     {
