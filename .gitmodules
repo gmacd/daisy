@@ -4,3 +4,6 @@
 [submodule "bx"]
 	path = bx
 	url = https://github.com/bkaradzic/bx.git
+[submodule "chibi-scheme"]
+	path = chibi-scheme
+	url = https://github.com/ashinn/chibi-scheme.git

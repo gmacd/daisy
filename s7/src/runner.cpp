@@ -24,7 +24,6 @@ namespace s7 {
 		auto u_time = bgfx::createUniform("u_time", bgfx::UniformType::Vec4);
 		auto program = LoadProgram("vs_mesh", "fs_mesh");
         
-        //auto genmesh = CreateCubeMesh();
         auto genmesh = CreateOctahedronMesh();
         auto mesh = Convert(*genmesh);
 
