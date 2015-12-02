@@ -129,7 +129,6 @@
 		BF429E0C1BF5BEB200E8BA80 /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mesh.h; path = s7core/src/mesh.h; sourceTree = "<group>"; };
 		BF429E101BF6862900E8BA80 /* genmeshconverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = genmeshconverter.cpp; path = s7core/src/genmeshconverter.cpp; sourceTree = "<group>"; };
 		BF429E111BF6862900E8BA80 /* genmeshconverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = genmeshconverter.h; path = s7core/src/genmeshconverter.h; sourceTree = "<group>"; };
-		BFB0E4721C0CE71C001EB663 /* libchibi-scheme.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libchibi-scheme.a"; path = "chibi-scheme/libchibi-scheme.a"; sourceTree = "<group>"; };
 		BFB0E47E1C0D138F001EB663 /* io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = io.cpp; path = s7core/src/io.cpp; sourceTree = "<group>"; };
 		BFB0E47F1C0D138F001EB663 /* io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = io.h; path = s7core/src/io.h; sourceTree = "<group>"; };
 		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
@@ -186,7 +185,6 @@
 		7E52275D0E47769C010B3156 /* External References */ = {
 			isa = PBXGroup;
 			children = (
-				BFB0E4721C0CE71C001EB663 /* libchibi-scheme.a */,
 				BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */,
 				BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */,
 			);
