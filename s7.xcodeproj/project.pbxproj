@@ -35,10 +35,6 @@
 		BF429E131BF6862900E8BA80 /* genmeshconverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E101BF6862900E8BA80 /* genmeshconverter.cpp */; };
 		BF6AD4971C06E292004714B6 /* libbgfxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FED1BE4EBBF00C21B7D /* libbgfxDebug.a */; };
 		BF6AD4981C06E292004714B6 /* libexample-commonDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FF31BE4EBC500C21B7D /* libexample-commonDebug.a */; };
-		BFB0E4701C0B8A47001EB663 /* scheme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E46E1C0B8A47001EB663 /* scheme.cpp */; };
-		BFB0E4711C0B8A47001EB663 /* scheme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E46E1C0B8A47001EB663 /* scheme.cpp */; };
-		BFB0E4731C0CE71C001EB663 /* libchibi-scheme.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB0E4721C0CE71C001EB663 /* libchibi-scheme.a */; };
-		BFB0E47D1C0D0078001EB663 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = BFB0E47C1C0D0078001EB663 /* scripts */; };
 		BFB0E4801C0D138F001EB663 /* io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E47E1C0D138F001EB663 /* io.cpp */; };
 		BFB0E4811C0D138F001EB663 /* io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E47E1C0D138F001EB663 /* io.cpp */; };
 /* End PBXBuildFile section */
@@ -133,10 +129,7 @@
 		BF429E0C1BF5BEB200E8BA80 /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mesh.h; path = s7core/src/mesh.h; sourceTree = "<group>"; };
 		BF429E101BF6862900E8BA80 /* genmeshconverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = genmeshconverter.cpp; path = s7core/src/genmeshconverter.cpp; sourceTree = "<group>"; };
 		BF429E111BF6862900E8BA80 /* genmeshconverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = genmeshconverter.h; path = s7core/src/genmeshconverter.h; sourceTree = "<group>"; };
-		BFB0E46E1C0B8A47001EB663 /* scheme.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scheme.cpp; path = s7core/src/scheme.cpp; sourceTree = "<group>"; };
-		BFB0E46F1C0B8A47001EB663 /* scheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scheme.h; path = s7core/src/scheme.h; sourceTree = "<group>"; };
 		BFB0E4721C0CE71C001EB663 /* libchibi-scheme.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libchibi-scheme.a"; path = "chibi-scheme/libchibi-scheme.a"; sourceTree = "<group>"; };
-		BFB0E47C1C0D0078001EB663 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = assets/scripts; sourceTree = "<group>"; };
 		BFB0E47E1C0D138F001EB663 /* io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = io.cpp; path = s7core/src/io.cpp; sourceTree = "<group>"; };
 		BFB0E47F1C0D138F001EB663 /* io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = io.h; path = s7core/src/io.h; sourceTree = "<group>"; };
 		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
@@ -148,7 +141,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFB0E4731C0CE71C001EB663 /* libchibi-scheme.a in Frameworks */,
 				BF1A800C1BE4F048001B4DCF /* libbgfxDebug.a in Frameworks */,
 				BF1A800D1BE4F048001B4DCF /* libexample-commonDebug.a in Frameworks */,
 			);
@@ -243,7 +235,6 @@
 		BF1A802F1BE5F363001B4DCF /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				BFB0E47C1C0D0078001EB663 /* scripts */,
 				BF1A80361BE5F554001B4DCF /* meshes */,
 				BF1A80341BE5F510001B4DCF /* shaders */,
 				BF1A80301BE5F390001B4DCF /* font */,
@@ -279,8 +270,6 @@
 				BF429E0C1BF5BEB200E8BA80 /* mesh.h */,
 				BF429E101BF6862900E8BA80 /* genmeshconverter.cpp */,
 				BF429E111BF6862900E8BA80 /* genmeshconverter.h */,
-				BFB0E46E1C0B8A47001EB663 /* scheme.cpp */,
-				BFB0E46F1C0B8A47001EB663 /* scheme.h */,
 			);
 			name = core2;
 			sourceTree = "<group>";
@@ -407,7 +396,6 @@
 			files = (
 				BF1A80281BE4FDD1001B4DCF /* vs_mesh.sc in Resources */,
 				BF1A80331BE5F390001B4DCF /* textures in Resources */,
-				BFB0E47D1C0D0078001EB663 /* scripts in Resources */,
 				BF1A80221BE4FDD1001B4DCF /* fs_mesh.sc in Resources */,
 				BF1A80351BE5F510001B4DCF /* shaders in Resources */,
 				BF1A80371BE5F554001B4DCF /* meshes in Resources */,
@@ -425,7 +413,6 @@
 			files = (
 				BF429E021BEDDDCB00E8BA80 /* mat.cpp in Sources */,
 				BF1A80241BE4FDD1001B4DCF /* material.cpp in Sources */,
-				BFB0E4701C0B8A47001EB663 /* scheme.cpp in Sources */,
 				BF1A80171BE4FDC0001B4DCF /* core.cpp in Sources */,
 				BFB0E4801C0D138F001EB663 /* io.cpp in Sources */,
 				BF429E051BEF29B700E8BA80 /* genmesh.cpp in Sources */,
@@ -442,7 +429,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF1A80451BE654FF001B4DCF /* core.cpp in Sources */,
-				BFB0E4711C0B8A47001EB663 /* scheme.cpp in Sources */,
 				BF429E0A1BEFF18900E8BA80 /* genmesh.cpp in Sources */,
 				BF429E0E1BF5BEFA00E8BA80 /* mesh.cpp in Sources */,
 				BF3D015C1C00D9A0008E7747 /* primitives.cpp in Sources */,
