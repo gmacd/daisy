@@ -4,15 +4,17 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "03051BBB1E8D6B2DEB531E6F312051C368BCD9E0" : 0,
     "C63116EC57C58DE0419A43F9413CB55989FCC336" : 0,
-    "C0B47815E746CE670B865065EBD28FCA9DD6D183" : 0
+    "03051BBB1E8D6B2DEB531E6F312051C368BCD9E0" : 0,
+    "C0B47815E746CE670B865065EBD28FCA9DD6D183" : 0,
+    "208E05300F7F248AE2BD5720F679E1AABA12819F" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BFAEE81F-3B74-4D95-8595-588BA65AC9E3",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "03051BBB1E8D6B2DEB531E6F312051C368BCD9E0" : "..",
     "C63116EC57C58DE0419A43F9413CB55989FCC336" : "bgfx\/",
-    "C0B47815E746CE670B865065EBD28FCA9DD6D183" : "daisy\/"
+    "03051BBB1E8D6B2DEB531E6F312051C368BCD9E0" : "..",
+    "C0B47815E746CE670B865065EBD28FCA9DD6D183" : "daisy\/",
+    "208E05300F7F248AE2BD5720F679E1AABA12819F" : "daisy\/chibi-scheme\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "s7",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -22,6 +24,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/gmacd\/cs6.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "03051BBB1E8D6B2DEB531E6F312051C368BCD9E0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ashinn\/chibi-scheme.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "208E05300F7F248AE2BD5720F679E1AABA12819F"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/gmacd\/daisy.git",
