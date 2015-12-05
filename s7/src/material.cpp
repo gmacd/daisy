@@ -7,14 +7,16 @@
 
 namespace s7 {
 
-	static const bgfx::Memory* loadMem(bx::FileReaderI* _reader, const char* _filePath)
+	static const bgfx::Memory* loadMem(
+        bx::FileReaderI* reader,
+        const char* filePath)
 	{
-		if (0 == bx::open(_reader, _filePath))
+		if (0 == bx::open(reader, filePath))
 		{
-			uint32_t size = (uint32_t)bx::getSize(_reader);
+			uint32_t size = (uint32_t)bx::getSize(reader);
 			const bgfx::Memory* mem = bgfx::alloc(size + 1);
-			bx::read(_reader, mem->data, size);
-			bx::close(_reader);
+			bx::read(reader, mem->data, size);
+			bx::close(reader);
 			mem->data[mem->size - 1] = '\0';
 			return mem;
 		}
@@ -22,18 +24,22 @@ namespace s7 {
 		return NULL;
 	}
 
-	static void* loadMem(bx::FileReaderI* _reader, bx::AllocatorI* _allocator, const char* _filePath, uint32_t* _size)
+	static void* loadMem(
+        bx::FileReaderI* reader,
+        bx::AllocatorI* allocator,
+        const char* filePath,
+        uint32_t* actualSizePtr)
 	{
-		if (0 == bx::open(_reader, _filePath))
+		if (0 == bx::open(reader, filePath))
 		{
-			uint32_t size = (uint32_t)bx::getSize(_reader);
-			void* data = BX_ALLOC(_allocator, size);
-			bx::read(_reader, data, size);
-			bx::close(_reader);
+			uint32_t size = (uint32_t)bx::getSize(reader);
+			void* data = BX_ALLOC(allocator, size);
+			bx::read(reader, data, size);
+			bx::close(reader);
 
-			if (NULL != _size)
+			if (NULL != actualSizePtr)
 			{
-				*_size = size;
+				*actualSizePtr = size;
 			}
 			return data;
 		}
@@ -41,7 +47,9 @@ namespace s7 {
 		return NULL;
 	}
 
-	static bgfx::ShaderHandle loadShader(bx::FileReaderI* _reader, const char* _name)
+	static bgfx::ShaderHandle loadShader(
+        bx::FileReaderI* reader,
+        const char* name)
 	{
 		char filePath[512];
 
@@ -71,55 +79,63 @@ namespace s7 {
 		}
 
 		strcpy(filePath, shaderPath);
-		strcat(filePath, _name);
+		strcat(filePath, name);
 		strcat(filePath, ".bin");
 
-		return bgfx::createShader(loadMem(_reader, filePath));
+		return bgfx::createShader(loadMem(reader, filePath));
 	}
 
-	bgfx::ShaderHandle LoadShader(const char* _name)
+	bgfx::ShaderHandle LoadShader(const char* name)
 	{
-		return loadShader(entry::getFileReader(), _name);
+		return loadShader(entry::getFileReader(), name);
 	}
 
-	bgfx::ProgramHandle loadProgram(bx::FileReaderI* _reader, const char* _vsName, const char* _fsName)
+	bgfx::ProgramHandle loadProgram(
+        bx::FileReaderI* reader,
+        const char* vertName,
+        const char* fragName)
 	{
-		bgfx::ShaderHandle vsh = loadShader(_reader, _vsName);
+		bgfx::ShaderHandle vsh = loadShader(reader, vertName);
 		bgfx::ShaderHandle fsh = BGFX_INVALID_HANDLE;
-		if (NULL != _fsName)
+		if (fragName != nullptr)
 		{
-			fsh = loadShader(_reader, _fsName);
+			fsh = loadShader(reader, fragName);
 		}
 
 		return bgfx::createProgram(vsh, fsh, true /* destroy shaders when program is destroyed */);
 	}
 
-	bgfx::ProgramHandle LoadProgram(const char* _vsName, const char* _fsName)
+	bgfx::ProgramHandle LoadProgram(const char* vertName, const char* fragName)
 	{
-		return loadProgram(entry::getFileReader(), _vsName, _fsName);
+		return loadProgram(entry::getFileReader(), vertName, fragName);
 	}
 
 	typedef unsigned char stbi_uc;
 	extern "C" stbi_uc *stbi_load_from_memory(stbi_uc const *buffer, int len, int *x, int *y, int *comp, int req_comp);
 
-	bgfx::TextureHandle loadTexture(bx::FileReaderI* _reader, const char* _name, uint32_t _flags, uint8_t _skip, bgfx::TextureInfo* _info)
+	bgfx::TextureHandle loadTexture(
+        bx::FileReaderI* reader,
+        const char* name,
+        uint32_t flags,
+        uint8_t skip,
+        bgfx::TextureInfo* info)
 	{
 		char filePath[512] = { '\0' };
-		if (NULL == strchr(_name, '/'))
+		if (NULL == strchr(name, '/'))
 		{
 			strcpy(filePath, "textures/");
 		}
 
-		strcat(filePath, _name);
+		strcat(filePath, name);
 
-		if (NULL != bx::stristr(_name, ".dds")
-			|| NULL != bx::stristr(_name, ".pvr")
-			|| NULL != bx::stristr(_name, ".ktx"))
+		if (NULL != bx::stristr(name, ".dds")
+			|| NULL != bx::stristr(name, ".pvr")
+			|| NULL != bx::stristr(name, ".ktx"))
 		{
-			const bgfx::Memory* mem = loadMem(_reader, filePath);
+			const bgfx::Memory* mem = loadMem(reader, filePath);
 			if (NULL != mem)
 			{
-				return bgfx::createTexture(mem, _flags, _skip, _info);
+				return bgfx::createTexture(mem, flags, skip, info);
 			}
 
 			bgfx::TextureHandle handle = BGFX_INVALID_HANDLE;
@@ -131,7 +147,7 @@ namespace s7 {
 		bx::AllocatorI* allocator = entry::getAllocator();
 
 		uint32_t size = 0;
-		void* data = loadMem(_reader, allocator, filePath, &size);
+		void* data = loadMem(reader, allocator, filePath, &size);
 		if (NULL != data)
 		{
 			int width = 0;
@@ -145,24 +161,24 @@ namespace s7 {
 
 			if (NULL != img)
 			{
-				handle = bgfx::createTexture2D(uint16_t(width), uint16_t(height), 1
-					, bgfx::TextureFormat::RGBA8
-					, _flags
-					, bgfx::copy(img, width*height * 4)
-					);
+				handle = bgfx::createTexture2D(
+                    uint16_t(width), uint16_t(height),
+                    1,
+					bgfx::TextureFormat::RGBA8,
+                    flags,
+                    bgfx::copy(img, width*height * 4));
 
 				free(img);
 
-				if (NULL != _info)
+				if (info != nullptr)
 				{
-					bgfx::calcTextureSize(*_info
-						, uint16_t(width)
-						, uint16_t(height)
-						, 0
-						, false
-						, 1
-						, bgfx::TextureFormat::RGBA8
-						);
+					bgfx::calcTextureSize(
+                        *info,
+                        uint16_t(width), uint16_t(height),
+                        0,
+                        false,
+                        1,
+                        bgfx::TextureFormat::RGBA8);
 				}
 			}
 		}
@@ -174,8 +190,12 @@ namespace s7 {
 		return handle;
 	}
 
-	bgfx::TextureHandle LoadTexture(const char* _name, uint32_t _flags, uint8_t _skip, bgfx::TextureInfo* _info)
+	bgfx::TextureHandle LoadTexture(
+        const char* name,
+        uint32_t flags,
+        uint8_t skip,
+        bgfx::TextureInfo* info)
 	{
-		return loadTexture(entry::getFileReader(), _name, _flags, _skip, _info);
+		return loadTexture(entry::getFileReader(), name, flags, skip, info);
 	}
 }

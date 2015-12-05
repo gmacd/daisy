@@ -5,7 +5,16 @@
 
 namespace s7 {
 
-	bgfx::ShaderHandle LoadShader(const char* _name);
-	bgfx::ProgramHandle LoadProgram(const char* _vsName, const char* _fsName);
-	bgfx::TextureHandle LoadTexture(const char* _name, uint32_t _flags = BGFX_TEXTURE_NONE, uint8_t _skip = 0, bgfx::TextureInfo* _info = NULL);
+	bgfx::ShaderHandle LoadShader(
+        const char* name);
+    
+	bgfx::ProgramHandle LoadProgram(
+        const char* vertName,
+        const char* fragName);
+    
+	bgfx::TextureHandle LoadTexture(
+        const char* name,
+        uint32_t flags = BGFX_TEXTURE_NONE,
+        uint8_t skip = 0,
+        bgfx::TextureInfo* info = nullptr);
 }

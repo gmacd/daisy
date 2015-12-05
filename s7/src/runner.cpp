@@ -22,7 +22,7 @@ namespace s7 {
 	void Runner::Run()
 	{
 		auto u_time = bgfx::createUniform("u_time", bgfx::UniformType::Vec4);
-		auto program = LoadProgram("vs_mesh", "fs_mesh");
+		auto program = LoadProgram("mesh.vert", "mesh.frag");
         
         auto genmesh = CreateOctahedronMesh();
         auto mesh = Convert(*genmesh);

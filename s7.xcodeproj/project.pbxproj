@@ -10,16 +10,9 @@
 		BF1A800C1BE4F048001B4DCF /* libbgfxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FED1BE4EBBF00C21B7D /* libbgfxDebug.a */; };
 		BF1A800D1BE4F048001B4DCF /* libexample-commonDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FF31BE4EBC500C21B7D /* libexample-commonDebug.a */; };
 		BF1A80171BE4FDC0001B4DCF /* core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80151BE4FDC0001B4DCF /* core.cpp */; };
-		BF1A80221BE4FDD1001B4DCF /* fs_mesh.sc in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80181BE4FDD1001B4DCF /* fs_mesh.sc */; };
 		BF1A80231BE4FDD1001B4DCF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80191BE4FDD1001B4DCF /* main.cpp */; };
 		BF1A80241BE4FDD1001B4DCF /* material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A801A1BE4FDD1001B4DCF /* material.cpp */; };
 		BF1A80261BE4FDD1001B4DCF /* runner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A801E1BE4FDD1001B4DCF /* runner.cpp */; };
-		BF1A80271BE4FDD1001B4DCF /* varying.def.sc in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80201BE4FDD1001B4DCF /* varying.def.sc */; };
-		BF1A80281BE4FDD1001B4DCF /* vs_mesh.sc in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80211BE4FDD1001B4DCF /* vs_mesh.sc */; };
-		BF1A80321BE5F390001B4DCF /* font in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80301BE5F390001B4DCF /* font */; };
-		BF1A80331BE5F390001B4DCF /* textures in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80311BE5F390001B4DCF /* textures */; };
-		BF1A80351BE5F510001B4DCF /* shaders in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80341BE5F510001B4DCF /* shaders */; };
-		BF1A80371BE5F554001B4DCF /* meshes in Resources */ = {isa = PBXBuildFile; fileRef = BF1A80361BE5F554001B4DCF /* meshes */; };
 		BF1A80451BE654FF001B4DCF /* core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80151BE4FDC0001B4DCF /* core.cpp */; };
 		BF1A80471BE654FF001B4DCF /* s7tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */; };
 		BF1A80521BE6573F001B4DCF /* s7benchmarks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */; };
@@ -33,39 +26,67 @@
 		BF429E0E1BF5BEFA00E8BA80 /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E0B1BF5BEB200E8BA80 /* mesh.cpp */; };
 		BF429E121BF6862900E8BA80 /* genmeshconverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E101BF6862900E8BA80 /* genmeshconverter.cpp */; };
 		BF429E131BF6862900E8BA80 /* genmeshconverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E101BF6862900E8BA80 /* genmeshconverter.cpp */; };
+		BF4309AC1C13054F001CC257 /* mesh.frag.sc in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80181BE4FDD1001B4DCF /* mesh.frag.sc */; };
+		BF4309B91C135854001CC257 /* mesh.vert.sc in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80211BE4FDD1001B4DCF /* mesh.vert.sc */; };
+		BF4309BB1C135B23001CC257 /* shaders in Resources */ = {isa = PBXBuildFile; fileRef = BF4309BA1C135B23001CC257 /* shaders */; };
 		BF6AD4971C06E292004714B6 /* libbgfxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FED1BE4EBBF00C21B7D /* libbgfxDebug.a */; };
 		BF6AD4981C06E292004714B6 /* libexample-commonDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FF31BE4EBC500C21B7D /* libexample-commonDebug.a */; };
 		BFB0E4801C0D138F001EB663 /* io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E47E1C0D138F001EB663 /* io.cpp */; };
 		BFB0E4811C0D138F001EB663 /* io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E47E1C0D138F001EB663 /* io.cpp */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		BF4309AB1C13046F001CC257 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.frag.sc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$PROJECT_DIR/assets/shaders/glsl/*.bin",
+			);
+			script = "bgfx/.build/osx64_clang/bin/shadercDebug -f \"$INPUT_FILE_DIR\"/\"$INPUT_FILE_NAME\" -o \"$PROJECT_DIR/assets/shaders/glsl/$INPUT_FILE_BASE.bin\" --type fragment --platform osx --varyingdef \"$INPUT_FILE_DIR\"/varying.def.sc\n";
+		};
+		BF4309B81C135815001CC257 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.vert.sc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$PROJECT_DIR/assets/shaders/glsl/*.bin",
+			);
+			script = "bgfx/.build/osx64_clang/bin/shadercDebug -f \"$INPUT_FILE_DIR\"/\"$INPUT_FILE_NAME\" -o \"$PROJECT_DIR/assets/shaders/glsl/$INPUT_FILE_BASE.bin\" --type vertex --platform osx --varyingdef \"$INPUT_FILE_DIR\"/varying.def.sc\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		BF1A800E1BE4F056001B4DCF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 14844BFB5F862D2A747644C7;
+			remoteGlobalIDString = 5EB52F3E5CEB327E764F1B89;
 			remoteInfo = bgfx;
 		};
 		BF1A80101BE4F056001B4DCF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 6D3F00585AEB50776ADD035C;
+			remoteGlobalIDString = 5DEF600B51DA487D1FDA09A8;
 			remoteInfo = "example-common";
 		};
 		BF6AD4931C06E27F004714B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 14844BFB5F862D2A747644C7;
+			remoteGlobalIDString = 5EB52F3E5CEB327E764F1B89;
 			remoteInfo = bgfx;
 		};
 		BF6AD4951C06E27F004714B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFC62FEE1BE4EBC500C21B7D /* example-common.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 6D3F00585AEB50776ADD035C;
+			remoteGlobalIDString = 5DEF600B51DA487D1FDA09A8;
 			remoteInfo = "example-common";
 		};
 		BFC62FEC1BE4EBBF00C21B7D /* PBXContainerItemProxy */ = {
@@ -100,19 +121,15 @@
 		3C6A573719B372D8452B7C32 /* s7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = s7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1A80151BE4FDC0001B4DCF /* core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = core.cpp; path = s7core/src/core.cpp; sourceTree = "<group>"; };
 		BF1A80161BE4FDC0001B4DCF /* core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = core.h; path = s7core/src/core.h; sourceTree = "<group>"; };
-		BF1A80181BE4FDD1001B4DCF /* fs_mesh.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fs_mesh.sc; path = s7/src/fs_mesh.sc; sourceTree = "<group>"; };
+		BF1A80181BE4FDD1001B4DCF /* mesh.frag.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mesh.frag.sc; path = s7/src/mesh.frag.sc; sourceTree = "<group>"; };
 		BF1A80191BE4FDD1001B4DCF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = s7/src/main.cpp; sourceTree = "<group>"; };
 		BF1A801A1BE4FDD1001B4DCF /* material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = material.cpp; path = s7/src/material.cpp; sourceTree = "<group>"; };
 		BF1A801B1BE4FDD1001B4DCF /* material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = material.h; path = s7/src/material.h; sourceTree = "<group>"; };
 		BF1A801E1BE4FDD1001B4DCF /* runner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = runner.cpp; path = s7/src/runner.cpp; sourceTree = "<group>"; };
 		BF1A801F1BE4FDD1001B4DCF /* runner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = runner.h; path = s7/src/runner.h; sourceTree = "<group>"; };
 		BF1A80201BE4FDD1001B4DCF /* varying.def.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = varying.def.sc; path = s7/src/varying.def.sc; sourceTree = "<group>"; };
-		BF1A80211BE4FDD1001B4DCF /* vs_mesh.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vs_mesh.sc; path = s7/src/vs_mesh.sc; sourceTree = "<group>"; };
+		BF1A80211BE4FDD1001B4DCF /* mesh.vert.sc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mesh.vert.sc; path = s7/src/mesh.vert.sc; sourceTree = "<group>"; };
 		BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s7tests.cpp; path = s7tests/src/s7tests.cpp; sourceTree = "<group>"; };
-		BF1A80301BE5F390001B4DCF /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; name = font; path = bgfx/examples/runtime/font; sourceTree = "<group>"; };
-		BF1A80311BE5F390001B4DCF /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = textures; path = bgfx/examples/runtime/textures; sourceTree = "<group>"; };
-		BF1A80341BE5F510001B4DCF /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shaders; path = bgfx/examples/runtime/shaders; sourceTree = "<group>"; };
-		BF1A80361BE5F554001B4DCF /* meshes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = meshes; path = bgfx/examples/runtime/meshes; sourceTree = "<group>"; };
 		BF1A803E1BE6548C001B4DCF /* s7test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = s7test; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = s7benchmarks.cpp; path = s7tests/src/s7benchmarks.cpp; sourceTree = "<group>"; };
 		BF1A80541BE8021E001B4DCF /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = catch.hpp; path = third/include/catch.hpp; sourceTree = "<group>"; };
@@ -129,6 +146,7 @@
 		BF429E0C1BF5BEB200E8BA80 /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mesh.h; path = s7core/src/mesh.h; sourceTree = "<group>"; };
 		BF429E101BF6862900E8BA80 /* genmeshconverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = genmeshconverter.cpp; path = s7core/src/genmeshconverter.cpp; sourceTree = "<group>"; };
 		BF429E111BF6862900E8BA80 /* genmeshconverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = genmeshconverter.h; path = s7core/src/genmeshconverter.h; sourceTree = "<group>"; };
+		BF4309BA1C135B23001CC257 /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shaders; path = assets/shaders; sourceTree = "<group>"; };
 		BFB0E47E1C0D138F001EB663 /* io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = io.cpp; path = s7core/src/io.cpp; sourceTree = "<group>"; };
 		BFB0E47F1C0D138F001EB663 /* io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = io.h; path = s7core/src/io.h; sourceTree = "<group>"; };
 		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
@@ -160,7 +178,7 @@
 		28F4183720E11FD901282985 /* example-04-mesh */ = {
 			isa = PBXGroup;
 			children = (
-				BF1A802F1BE5F363001B4DCF /* assets */,
+				BF4309BC1C135B29001CC257 /* assets */,
 				BF429DFF1BEBF95E00E8BA80 /* shaders */,
 				BF1A80131BE4FD95001B4DCF /* core */,
 				BF429E0F1BF685C600E8BA80 /* core2 */,
@@ -230,17 +248,6 @@
 			name = tests;
 			sourceTree = "<group>";
 		};
-		BF1A802F1BE5F363001B4DCF /* assets */ = {
-			isa = PBXGroup;
-			children = (
-				BF1A80361BE5F554001B4DCF /* meshes */,
-				BF1A80341BE5F510001B4DCF /* shaders */,
-				BF1A80301BE5F390001B4DCF /* font */,
-				BF1A80311BE5F390001B4DCF /* textures */,
-			);
-			name = assets;
-			sourceTree = "<group>";
-		};
 		BF1A80531BE8020F001B4DCF /* third */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,9 +261,9 @@
 		BF429DFF1BEBF95E00E8BA80 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				BF1A80181BE4FDD1001B4DCF /* fs_mesh.sc */,
+				BF1A80181BE4FDD1001B4DCF /* mesh.frag.sc */,
+				BF1A80211BE4FDD1001B4DCF /* mesh.vert.sc */,
 				BF1A80201BE4FDD1001B4DCF /* varying.def.sc */,
-				BF1A80211BE4FDD1001B4DCF /* vs_mesh.sc */,
 			);
 			name = shaders;
 			sourceTree = "<group>";
@@ -270,6 +277,14 @@
 				BF429E111BF6862900E8BA80 /* genmeshconverter.h */,
 			);
 			name = core2;
+			sourceTree = "<group>";
+		};
+		BF4309BC1C135B29001CC257 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				BF4309BA1C135B23001CC257 /* shaders */,
+			);
+			name = assets;
 			sourceTree = "<group>";
 		};
 		BFC62FE91BE4EBBF00C21B7D /* Products */ = {
@@ -295,11 +310,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4AC06F19429500FD62A9673E /* Build configuration list for PBXNativeTarget "s7" */;
 			buildPhases = (
-				0B69095D012476A435B235B5 /* Resources */,
 				595E11661E325C8C34B15B7C /* Sources */,
 				200620BB171A0ADE1B0D4953 /* Frameworks */,
+				BF4309AF1C1352FE001CC257 /* Resources */,
 			);
 			buildRules = (
+				BF4309B81C135815001CC257 /* PBXBuildRule */,
+				BF4309AB1C13046F001CC257 /* PBXBuildRule */,
 			);
 			dependencies = (
 				BF1A800F1BE4F056001B4DCF /* PBXTargetDependency */,
@@ -388,17 +405,11 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0B69095D012476A435B235B5 /* Resources */ = {
+		BF4309AF1C1352FE001CC257 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF1A80281BE4FDD1001B4DCF /* vs_mesh.sc in Resources */,
-				BF1A80331BE5F390001B4DCF /* textures in Resources */,
-				BF1A80221BE4FDD1001B4DCF /* fs_mesh.sc in Resources */,
-				BF1A80351BE5F510001B4DCF /* shaders in Resources */,
-				BF1A80371BE5F554001B4DCF /* meshes in Resources */,
-				BF1A80271BE4FDD1001B4DCF /* varying.def.sc in Resources */,
-				BF1A80321BE5F390001B4DCF /* font in Resources */,
+				BF4309BB1C135B23001CC257 /* shaders in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +420,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4309AC1C13054F001CC257 /* mesh.frag.sc in Sources */,
+				BF4309B91C135854001CC257 /* mesh.vert.sc in Sources */,
 				BF429E021BEDDDCB00E8BA80 /* mat.cpp in Sources */,
 				BF1A80241BE4FDD1001B4DCF /* material.cpp in Sources */,
 				BF1A80171BE4FDC0001B4DCF /* core.cpp in Sources */,
