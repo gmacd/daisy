@@ -3,6 +3,9 @@
 #include <cmath>
 #include <algorithm>
 
+
+// TODO - Point3, and review all vec* code?
+
 namespace s7 {
 
 	float toRad(float deg)
@@ -14,6 +17,11 @@ namespace s7 {
 	{
 		return rad * 180.0f / Pi;
 	}
+
+
+    ///////////////////////////////////////////
+    // Vec3f
+
 
     float Vec3f::Len() const
     {
@@ -60,7 +68,65 @@ namespace s7 {
     const Vec3f Vec3f::XAxis(1, 0, 0);
     const Vec3f Vec3f::YAxis(0, 1, 0);
     const Vec3f Vec3f::ZAxis(0, 0, 1);
+
+
+    ///////////////////////////////////////////
+    // Vec4f
+
+
+    float Vec4f::Len() const
+    {
+        return Sqrt(x*x + y*y + z*z + w*w);
+    }
+
+    Vec4f& Vec4f::Normalize()
+    {
+        auto len = Len();
+        x /= len;
+        y /= len;
+        z /= len;
+        w /= len;
+        return *this;
+    }
     
+    Vec4f Vec4f::Normal() const
+    {
+        auto len = Len();
+        return Vec4f(x/len, y/len, z/len, w/len);
+    }
+    
+    float Vec4f::Dot(const Vec4f& v) const
+    {
+        return x*v.x + y*v.y + z*v.z + w*v.w;
+    }
+
+    Vec4f Vec4f::Cross(const Vec4f& v) const
+    {
+        return Vec4f(
+            y*v.z - z*v.y,
+            z*v.x - x*v.z,
+            x*v.y - y*v.x,
+            1.0f
+        );
+    }
+
+    Vec4f Vec4f::MidPoint(const Vec4f& v) const
+    {
+        return Vec4f(
+            (x + v.x) / 2.0f,
+            (y + v.y) / 2.0f,
+            (z + v.z) / 2.0f,
+            0.0f);
+    }
+
+    const Vec4f Vec4f::XAxis(1, 0, 0, 1);
+    const Vec4f Vec4f::YAxis(0, 1, 0, 1);
+    const Vec4f Vec4f::ZAxis(0, 0, 1, 1);
+    
+    
+    ///////////////////////////////////////////
+    // Vec4u8
+
 
     Vec4u8& Vec4u8::operator=(const Vec3f& v)
     {
@@ -70,6 +136,10 @@ namespace s7 {
         w = 1.0f;
         return *this;
     }
+
+
+    ///////////////////////////////////////////
+    // Ray
 
 
     // Direction is not normalized

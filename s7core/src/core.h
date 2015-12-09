@@ -4,6 +4,46 @@
 
 namespace s7 {
 
+	struct Vec4f
+	{
+		float x, y, z, w;
+
+		Vec4f() : x(0), y(0), z(0), w(0) {}
+		Vec4f(float xx, float yy, float zz, float ww) : x(xx), y(yy), z(zz), w(ww) {}
+
+		void Set(float xx, float yy, float zz, float ww) { x = xx, y = yy, z = zz, w = ww; }
+        
+        bool operator==(const Vec4f& v) const { return this == &v || (x == v.x && y == v.y && z == v.z && w == v.w); }
+        
+		Vec4f operator+(const Vec4f& v) const { return Vec4f(x + v.x, y + v.y, z + v.z, w + v.w); }
+		Vec4f operator-(const Vec4f& v) const { return Vec4f(x - v.x, y - v.y, z - v.z, w - v.w); }
+		Vec4f operator*(const Vec4f& v) const { return Vec4f(x * v.x, y * v.y, z * v.z, w * v.w); }
+		Vec4f operator/(const Vec4f& v) const { return Vec4f(x / v.x, y / v.y, z / v.z, w / v.w); }
+
+		Vec4f operator+(float a) const { return Vec4f(x + a, y + a, z + a, w + a); }
+		Vec4f operator-(float a) const { return Vec4f(x - a, y - a, z - a, w - a); }
+		Vec4f operator*(float a) const { return Vec4f(x * a, y * a, z * a, w * a); }
+		Vec4f operator/(float a) const { return Vec4f(x / a, y / a, z / a, w / a); }
+        
+        friend Vec4f operator+(float a, const Vec4f& v) { return Vec4f(a + v.x, a + v.y, a + v.z, a + v.w); }
+        friend Vec4f operator-(float a, const Vec4f& v) { return Vec4f(a - v.x, a - v.y, a - v.z, a - v.w); }
+        friend Vec4f operator*(float a, const Vec4f& v) { return Vec4f(a * v.x, a * v.y, a * v.z, a * v.w); }
+        
+        Vec4f& Normalize();
+        
+        float Len() const;
+        Vec4f Normal() const;
+        float Dot(const Vec4f& v) const;
+        Vec4f Cross(const Vec4f& v) const;
+        
+        Vec4f MidPoint(const Vec4f&v) const;
+        
+        static const Vec4f XAxis;
+        static const Vec4f YAxis;
+        static const Vec4f ZAxis;
+	};
+
+
 	struct Vec3f
 	{
 		float x, y, z;

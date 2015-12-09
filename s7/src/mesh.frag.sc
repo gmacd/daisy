@@ -1,6 +1,10 @@
-uniform vec4 u_color;
+$input v_color0;
+
+
+#include "../../bgfx/src/bgfx_shader.sh"
+
 
 void main()
 {
-	gl_FragColor =  vec4(1, 0, 0, 1);
+	gl_FragColor =  v_color0;
 }

@@ -6,6 +6,7 @@
 #include "primitives.h"
 #include "mat.h"
 
+
 namespace s7 {
 
 	Runner::Runner()
@@ -21,7 +22,10 @@ namespace s7 {
 
 	void Runner::Run()
 	{
-		auto u_time = bgfx::createUniform("u_time", bgfx::UniformType::Vec4);
+		auto u_lightPos = bgfx::createUniform("u_lightPos", bgfx::UniformType::Vec4);
+		auto u_lightIntensity = bgfx::createUniform("u_lightIntensity", bgfx::UniformType::Vec4);
+		auto u_normalMat = bgfx::createUniform("u_normalMat", bgfx::UniformType::Mat4);
+
 		auto program = LoadProgram("mesh.vert", "mesh.frag");
         
         auto genmesh = CreateOctahedronMesh();
@@ -51,7 +55,6 @@ namespace s7 {
 			const double freq = double(bx::getHPFrequency());
 			const double toMs = 1000.0 / freq;
 			float time = (float)((bx::getHPCounter() - timeOffset) / double(bx::getHPFrequency()));
-			bgfx::setUniform(u_time, &time);
 
 			bgfx::dbgTextClear();
 			bgfx::dbgTextPrintf(0, 1, 0x4f, "s7");
@@ -68,9 +71,23 @@ namespace s7 {
             // Set view 0 default viewport.
             bgfx::setViewRect(0, 0, 0, _width, _height);
 
-            Mat44 mtx;
-            mtx.RotateXY(0.0f, time*0.37f);
-			mesh.Submit(0, program, mtx.Data());
+
+            // Scene
+            Mat44 modelMat;
+            modelMat.RotateXY(0.0f, time*0.37f);
+
+
+            // Prep shader
+            Vec4f lightPos(0, 0, 0, 1);
+			bgfx::setUniform(u_lightPos, &lightPos);
+
+            Vec4f lightIntensity(0, 1, -2.5f, 1);
+			bgfx::setUniform(u_lightIntensity, &lightIntensity);
+            
+            //auto normalMat = (viewMat * modelMat).Inverse().Transpose();
+			//bgfx::setUniform(u_normalMat, &normalMat);
+
+			mesh.Submit(0, program, modelMat.Data());
 
 			bgfx::frame();
 		}
@@ -78,7 +95,9 @@ namespace s7 {
 		mesh.Unload();
 
 		bgfx::destroyProgram(program);
-		bgfx::destroyUniform(u_time);
+		bgfx::destroyUniform(u_lightPos);
+		bgfx::destroyUniform(u_lightIntensity);
+		bgfx::destroyUniform(u_normalMat);
 	}
 
 	void Runner::Shutdown()

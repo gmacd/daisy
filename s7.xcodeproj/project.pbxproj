@@ -18,7 +18,6 @@
 		BF1A80521BE6573F001B4DCF /* s7benchmarks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */; };
 		BF3D015B1C00D9A0008E7747 /* primitives.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF3D01591C00D9A0008E7747 /* primitives.cpp */; };
 		BF3D015C1C00D9A0008E7747 /* primitives.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF3D01591C00D9A0008E7747 /* primitives.cpp */; };
-		BF429E021BEDDDCB00E8BA80 /* mat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E001BEDDDCB00E8BA80 /* mat.cpp */; };
 		BF429E051BEF29B700E8BA80 /* genmesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E031BEF29B700E8BA80 /* genmesh.cpp */; };
 		BF429E091BEFF17D00E8BA80 /* genmeshtests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E061BEFE57600E8BA80 /* genmeshtests.cpp */; };
 		BF429E0A1BEFF18900E8BA80 /* genmesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF429E031BEF29B700E8BA80 /* genmesh.cpp */; };
@@ -29,6 +28,7 @@
 		BF4309AC1C13054F001CC257 /* mesh.frag.sc in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80181BE4FDD1001B4DCF /* mesh.frag.sc */; };
 		BF4309B91C135854001CC257 /* mesh.vert.sc in Sources */ = {isa = PBXBuildFile; fileRef = BF1A80211BE4FDD1001B4DCF /* mesh.vert.sc */; };
 		BF4309BB1C135B23001CC257 /* shaders in Resources */ = {isa = PBXBuildFile; fileRef = BF4309BA1C135B23001CC257 /* shaders */; };
+		BF4309C51C18EF72001CC257 /* mat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF4309C31C18EF72001CC257 /* mat.cpp */; };
 		BF6AD4971C06E292004714B6 /* libbgfxDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FED1BE4EBBF00C21B7D /* libbgfxDebug.a */; };
 		BF6AD4981C06E292004714B6 /* libexample-commonDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC62FF31BE4EBC500C21B7D /* libexample-commonDebug.a */; };
 		BFB0E4801C0D138F001EB663 /* io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E47E1C0D138F001EB663 /* io.cpp */; };
@@ -137,8 +137,6 @@
 		BF1A80561BE8021E001B4DCF /* ratio_io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ratio_io.hpp; path = third/include/ratio_io.hpp; sourceTree = "<group>"; };
 		BF3D01591C00D9A0008E7747 /* primitives.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = primitives.cpp; path = s7core/src/primitives.cpp; sourceTree = "<group>"; };
 		BF3D015A1C00D9A0008E7747 /* primitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = primitives.h; path = s7core/src/primitives.h; sourceTree = "<group>"; };
-		BF429E001BEDDDCB00E8BA80 /* mat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mat.cpp; path = s7core/src/mat.cpp; sourceTree = "<group>"; };
-		BF429E011BEDDDCB00E8BA80 /* mat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mat.h; path = s7core/src/mat.h; sourceTree = "<group>"; };
 		BF429E031BEF29B700E8BA80 /* genmesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = genmesh.cpp; path = s7core/src/genmesh.cpp; sourceTree = "<group>"; };
 		BF429E041BEF29B700E8BA80 /* genmesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = genmesh.h; path = s7core/src/genmesh.h; sourceTree = "<group>"; };
 		BF429E061BEFE57600E8BA80 /* genmeshtests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = genmeshtests.cpp; path = s7tests/src/genmeshtests.cpp; sourceTree = "<group>"; };
@@ -147,6 +145,8 @@
 		BF429E101BF6862900E8BA80 /* genmeshconverter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = genmeshconverter.cpp; path = s7core/src/genmeshconverter.cpp; sourceTree = "<group>"; };
 		BF429E111BF6862900E8BA80 /* genmeshconverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = genmeshconverter.h; path = s7core/src/genmeshconverter.h; sourceTree = "<group>"; };
 		BF4309BA1C135B23001CC257 /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shaders; path = assets/shaders; sourceTree = "<group>"; };
+		BF4309C31C18EF72001CC257 /* mat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mat.cpp; path = s7core/src/mat.cpp; sourceTree = "<group>"; };
+		BF4309C41C18EF72001CC257 /* mat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mat.h; path = s7core/src/mat.h; sourceTree = "<group>"; };
 		BFB0E47E1C0D138F001EB663 /* io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = io.cpp; path = s7core/src/io.cpp; sourceTree = "<group>"; };
 		BFB0E47F1C0D138F001EB663 /* io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = io.h; path = s7core/src/io.h; sourceTree = "<group>"; };
 		BFC62FE81BE4EBBF00C21B7D /* bgfx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bgfx.xcodeproj; path = "bgfx/.build/projects/xcode4-osx/bgfx.xcodeproj"; sourceTree = "<group>"; };
@@ -224,12 +224,12 @@
 		BF1A80131BE4FD95001B4DCF /* core */ = {
 			isa = PBXGroup;
 			children = (
+				BF4309C31C18EF72001CC257 /* mat.cpp */,
+				BF4309C41C18EF72001CC257 /* mat.h */,
 				BF1A80151BE4FDC0001B4DCF /* core.cpp */,
 				BF1A80161BE4FDC0001B4DCF /* core.h */,
 				BFB0E47E1C0D138F001EB663 /* io.cpp */,
 				BFB0E47F1C0D138F001EB663 /* io.h */,
-				BF429E001BEDDDCB00E8BA80 /* mat.cpp */,
-				BF429E011BEDDDCB00E8BA80 /* mat.h */,
 				BF429E031BEF29B700E8BA80 /* genmesh.cpp */,
 				BF429E041BEF29B700E8BA80 /* genmesh.h */,
 				BF3D01591C00D9A0008E7747 /* primitives.cpp */,
@@ -241,8 +241,8 @@
 		BF1A80141BE4FDA3001B4DCF /* tests */ = {
 			isa = PBXGroup;
 			children = (
-				BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */,
 				BF1A80291BE4FDDC001B4DCF /* s7tests.cpp */,
+				BF1A80501BE656E3001B4DCF /* s7benchmarks.cpp */,
 				BF429E061BEFE57600E8BA80 /* genmeshtests.cpp */,
 			);
 			name = tests;
@@ -261,8 +261,8 @@
 		BF429DFF1BEBF95E00E8BA80 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				BF1A80181BE4FDD1001B4DCF /* mesh.frag.sc */,
 				BF1A80211BE4FDD1001B4DCF /* mesh.vert.sc */,
+				BF1A80181BE4FDD1001B4DCF /* mesh.frag.sc */,
 				BF1A80201BE4FDD1001B4DCF /* varying.def.sc */,
 			);
 			name = shaders;
@@ -420,9 +420,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF4309AC1C13054F001CC257 /* mesh.frag.sc in Sources */,
 				BF4309B91C135854001CC257 /* mesh.vert.sc in Sources */,
-				BF429E021BEDDDCB00E8BA80 /* mat.cpp in Sources */,
+				BF4309AC1C13054F001CC257 /* mesh.frag.sc in Sources */,
 				BF1A80241BE4FDD1001B4DCF /* material.cpp in Sources */,
 				BF1A80171BE4FDC0001B4DCF /* core.cpp in Sources */,
 				BFB0E4801C0D138F001EB663 /* io.cpp in Sources */,
@@ -443,6 +442,7 @@
 				BF429E0A1BEFF18900E8BA80 /* genmesh.cpp in Sources */,
 				BF429E0E1BF5BEFA00E8BA80 /* mesh.cpp in Sources */,
 				BF3D015C1C00D9A0008E7747 /* primitives.cpp in Sources */,
+				BF4309C51C18EF72001CC257 /* mat.cpp in Sources */,
 				BFB0E4811C0D138F001EB663 /* io.cpp in Sources */,
 				BF1A80471BE654FF001B4DCF /* s7tests.cpp in Sources */,
 				BF429E091BEFF17D00E8BA80 /* genmeshtests.cpp in Sources */,
@@ -499,7 +499,7 @@
 					bgfx/include,
 					bgfx/3rdparty,
 					bgfx/examples/common,
-					"chibi-scheme/include",
+					third/include,
 				);
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -587,7 +587,7 @@
 					bgfx/include,
 					bgfx/3rdparty,
 					bgfx/examples/common,
-					"chibi-scheme/include",
+					third/include,
 				);
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
