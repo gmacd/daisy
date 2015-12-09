@@ -4,6 +4,7 @@
 *.sdf
 *.xcuserstate
 *.xcbkptlist
+*.xcworkspacedata
 
 bin/
 obj/
