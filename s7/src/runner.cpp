@@ -1,10 +1,14 @@
 #include "runner.h"
 
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 #include "common.h"
 #include "material.h"
 #include "genmeshconverter.h"
 #include "primitives.h"
-#include "mat.h"
+#include "entity.h"
+#include "updatectx.h"
 
 namespace s7 {
 
@@ -21,7 +25,12 @@ namespace s7 {
 
 	void Runner::Run()
 	{
-		auto u_time = bgfx::createUniform("u_time", bgfx::UniformType::Vec4);
+        UpdateContext ctx;
+        ctx.Init();
+        
+        Entity octomesh;
+        octomesh.Init();
+        
 		auto program = LoadProgram("mesh.vert", "mesh.frag");
         
         auto genmesh = CreateOctahedronMesh();
@@ -37,6 +46,8 @@ namespace s7 {
 
 		while (!entry::processEvents(_width, _height, debug, reset))
 		{
+            ctx.Update();
+            
 			// Set view 0 default viewport.
 			bgfx::setViewRect(0, 0, 0, _width, _height);
 
@@ -51,26 +62,25 @@ namespace s7 {
 			const double freq = double(bx::getHPFrequency());
 			const double toMs = 1000.0 / freq;
 			float time = (float)((bx::getHPCounter() - timeOffset) / double(bx::getHPFrequency()));
-			bgfx::setUniform(u_time, &time);
 
 			bgfx::dbgTextClear();
 			bgfx::dbgTextPrintf(0, 1, 0x4f, "s7");
 			bgfx::dbgTextPrintf(0, 2, 0x0f, "Frame: % 7.3f[ms]", double(frameTime)*toMs);
 
-            Vec3f target(0, 0, 0);
-            Vec3f eye(0, 1, -2.5f);
+            glm::vec3 target(0, 0, 0);
+            glm::vec3 eye(0, 1, -2.5f);
+            glm::vec3 up(0, 1, 0);
             
-            Mat44 viewMat, projMat;
-            viewMat.LookAt(eye, target, Vec3f::YAxis);
-            projMat.PerspectiveProjection(60.0f, float(_width) / float(_height), 0.1f, 100.0f);
-            bgfx::setViewTransform(0, viewMat.Data(), projMat.Data());
+            glm::mat4 viewMat = glm::lookAt(eye, target, up);
+            glm::mat4 projMat = glm::perspective(toRad(60.0f), float(_width) / float(_height), 0.1f, 100.0f);
+            bgfx::setViewTransform(0, &viewMat, &projMat);
 
             // Set view 0 default viewport.
             bgfx::setViewRect(0, 0, 0, _width, _height);
 
-            Mat44 mtx;
-            mtx.RotateXY(0.0f, time*0.37f);
-			mesh.Submit(0, program, mtx.Data());
+            glm::mat4 mtx;
+            mtx = glm::rotate(mtx, time*0.37f, up);
+			mesh.Submit(0, program, (float*)&mtx);
 
 			bgfx::frame();
 		}
@@ -78,7 +88,6 @@ namespace s7 {
 		mesh.Unload();
 
 		bgfx::destroyProgram(program);
-		bgfx::destroyUniform(u_time);
 	}
 
 	void Runner::Shutdown()
