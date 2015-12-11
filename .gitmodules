@@ -7,3 +7,6 @@
 [submodule "chibi-scheme"]
 	path = chibi-scheme
 	url = https://github.com/ashinn/chibi-scheme.git
+[submodule "third/glm"]
+	path = third/glm
+	url = https://github.com/g-truc/glm

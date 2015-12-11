@@ -1,10 +1,14 @@
 #include "runner.h"
 
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 #include "common.h"
 #include "material.h"
 #include "genmeshconverter.h"
 #include "primitives.h"
-#include "mat.h"
+#include "entity.h"
+#include "updatectx.h"
 
 
 namespace s7 {
@@ -22,6 +26,12 @@ namespace s7 {
 
 	void Runner::Run()
 	{
+        UpdateContext ctx;
+        ctx.Init();
+        
+        Entity octomesh;
+        octomesh.Init();
+        
 		auto u_lightPos = bgfx::createUniform("u_lightPos", bgfx::UniformType::Vec4);
 		auto u_lightIntensity = bgfx::createUniform("u_lightIntensity", bgfx::UniformType::Vec4);
 		auto u_normalMat = bgfx::createUniform("u_normalMat", bgfx::UniformType::Mat4);
@@ -41,6 +51,8 @@ namespace s7 {
 
 		while (!entry::processEvents(_width, _height, debug, reset))
 		{
+            ctx.Update();
+            
 			// Set view 0 default viewport.
 			bgfx::setViewRect(0, 0, 0, _width, _height);
 
@@ -60,22 +72,20 @@ namespace s7 {
 			bgfx::dbgTextPrintf(0, 1, 0x4f, "s7");
 			bgfx::dbgTextPrintf(0, 2, 0x0f, "Frame: % 7.3f[ms]", double(frameTime)*toMs);
 
-            Vec3f target(0, 0, 0);
-            Vec3f eye(0, 1, -2.5f);
+            glm::vec3 target(0, 0, 0);
+            glm::vec3 eye(0, 1, -2.5f);
+            glm::vec3 up(0, 1, 0);
             
-            Mat44 viewMat, projMat;
-            viewMat.LookAt(eye, target, Vec3f::YAxis);
-            projMat.PerspectiveProjection(60.0f, float(_width) / float(_height), 0.1f, 100.0f);
-            bgfx::setViewTransform(0, viewMat.Data(), projMat.Data());
+            glm::mat4 viewMat = glm::lookAt(eye, target, up);
+            glm::mat4 projMat = glm::perspective(toRad(60.0f), float(_width) / float(_height), 0.1f, 100.0f);
+            bgfx::setViewTransform(0, &viewMat, &projMat);
 
             // Set view 0 default viewport.
             bgfx::setViewRect(0, 0, 0, _width, _height);
 
-
             // Scene
             Mat44 modelMat;
             modelMat.RotateXY(0.0f, time*0.37f);
-
 
             // Prep shader
             Vec4f lightPos(0, 0, 0, 1);
@@ -88,6 +98,10 @@ namespace s7 {
 			//bgfx::setUniform(u_normalMat, &normalMat);
 
 			mesh.Submit(0, program, modelMat.Data());
+
+            glm::mat4 mtx;
+            mtx = glm::rotate(mtx, time*0.37f, up);
+			mesh.Submit(0, program, (float*)&mtx);
 
 			bgfx::frame();
 		}
